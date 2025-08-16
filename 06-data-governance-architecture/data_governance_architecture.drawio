@@ -1,0 +1,229 @@
+<mxfile host="app.diagrams.net" modified="2024-01-15T10:30:00.000Z" agent="5.0" etag="abc123" version="24.0.0" type="device">
+  <diagram name="数据治理架构" id="data-governance-arch">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="title" value="基于Transformer架构思想的数据治理系统" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1f497d;strokeColor=#ffffff;strokeWidth=2;fontSize=18;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="600" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- 数据源层 -->
+        <mxCell id="data-source-layer" value="📊 数据源层" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="1100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oracle-db" value="Oracle业务库\n客户档案数据" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="data-center" value="数据中台\nT+1同步" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="240" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="postgres-dw" value="PostgreSQL数仓\n加工后数据" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;" vertex="1" parent="1">
+          <mxGeometry x="400" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sf-data" value="顺丰标准数据\n参考数据源" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;" vertex="1" parent="1">
+          <mxGeometry x="560" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rule-base" value="业务规则库\nRAG知识库" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;" vertex="1" parent="1">
+          <mxGeometry x="720" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 协调层 -->
+        <mxCell id="coordination-layer" value="🎯 数据治理协调层 (类似Transformer的Encoder)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="1100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="task-scheduler" value="任务调度器\n智能分片" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="150" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="load-balancer" value="负载均衡器\n资源调度" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="320" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="result-aggregator" value="结果聚合器\n质量评估" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="490" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="feedback-processor" value="反馈处理器\n增量学习" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="660" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="monitoring" value="监控中心\n性能指标" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="830" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 多头注意力层 -->
+        <mxCell id="attention-layer" value="🔍 多头注意力治理层 (Multi-Head Attention)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="460" width="1100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="address-head" value="地址治理头\n🏠 Address Agent\n• 格式标准化\n• 地理位置验证\n• 完整性检查" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="idcard-head" value="身份证治理头\n🆔 ID Card Agent\n• 格式校验\n• 校验位验证\n• 地区编码检查" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="520" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="phone-head" value="手机号治理头\n📱 Phone Agent\n• 号段验证\n• 运营商识别\n• 活跃状态检查" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="440" y="520" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="correlation-head" value="关联性分析头\n🔗 Correlation Agent\n• 字段一致性\n• 逻辑关联性\n• 异常模式检测" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="520" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="temporal-head" value="时序模式头\n⏰ Temporal Agent\n• 时间序列分析\n• 变更模式识别\n• 异常时点检测" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="520" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 并行处理层 -->
+        <mxCell id="parallel-layer" value="⚡ 并行处理执行层 (Parallelization)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="660" width="1100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="region-a" value="地市A处理节点\n🏙️ Region A\n• 县级1: 1000条/分钟\n• 县级2: 1200条/分钟\n• 县级3: 800条/分钟" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="720" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="region-b" value="地市B处理节点\n🏙️ Region B\n• 县级1: 900条/分钟\n• 县级2: 1100条/分钟\n• 县级3: 950条/分钟" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="720" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="region-c" value="地市C处理节点\n🏙️ Region C\n• 县级1: 1050条/分钟\n• 县级2: 750条/分钟\n• 县级3: 1300条/分钟" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="720" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="region-n" value="地市N处理节点\n🏙️ Region N\n• 动态扩缩容\n• 负载自适应\n• 故障自恢复" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="720" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 前馈网络层 -->
+        <mxCell id="ffn-layer" value="🧠 前馈网络评估层 (Feed-Forward Network)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="860" width="1100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="feature-extraction" value="特征提取层\n📊 Feature Extraction\n• 完整性特征\n• 准确性特征\n• 一致性特征\n• 时效性特征" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="920" width="150" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="quality-scoring" value="质量评分层\n⭐ Quality Scoring\n• 综合质量分数\n• 维度权重计算\n• 置信度评估\n• 风险量化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="920" width="150" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="risk-classification" value="风险分类层\n🚨 Risk Classification\n• 高危数据识别\n• 中危数据标记\n• 低危数据过滤\n• 建议生成" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="920" width="150" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="suggestion-generation" value="建议生成层\n💡 Suggestion Generation\n• 治理方案推荐\n• 优先级排序\n• 成本效益分析\n• 执行计划" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="920" width="150" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 输出层 -->
+        <mxCell id="output-layer" value="📤 输出和反馈层" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;strokeWidth=2;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1080" width="1100" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="human-review" value="人工审核\n👥 Human Review\n• 高危数据核实\n• 治理建议确认\n• 质量反馈" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1140" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="staging-db" value="暂存库\n🗄️ Staging DB\n• PostgreSQL\n• 治理结果存储\n• 版本管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="350" y="1140" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="batch-update" value="批量回刷\n🔄 Batch Update\n• 事务管理\n• 一致性保证\n• 回滚机制" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="1140" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="oracle-update" value="业务库更新\n🏛️ Oracle Update\n• 原子性操作\n• 数据备份\n• 变更日志" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="1140" width="140" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 数据流箭头 -->
+        <mxCell id="flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="oracle-db" target="data-center">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="data-center" target="postgres-dw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="postgres-dw" target="task-scheduler">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;" edge="1" parent="1" source="task-scheduler" target="address-head">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4caf50;" edge="1" parent="1" source="address-head" target="region-a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="region-a" target="feature-extraction">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="feature-extraction" target="quality-scoring">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="quality-scoring" target="risk-classification">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="risk-classification" target="suggestion-generation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#e91e63;" edge="1" parent="1" source="suggestion-generation" target="human-review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#e91e63;" edge="1" parent="1" source="human-review" target="staging-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#e91e63;" edge="1" parent="1" source="staging-db" target="batch-update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#e91e63;" edge="1" parent="1" source="batch-update" target="oracle-update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 反馈回路 -->
+        <mxCell id="feedback-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ff5722;strokeDashArray=5 5;" edge="1" parent="1" source="human-review" target="feedback-processor">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="1260" />
+              <mxPoint x="1000" y="1260" />
+              <mxPoint x="1000" y="370" />
+              <mxPoint x="720" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 图例 -->
+        <mxCell id="legend" value="🔍 图例说明\n━━━ 数据流\n┅┅┅ 反馈回路\n🏠 地址治理\n🆔 身份证治理\n📱 手机号治理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1140" width="150" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 性能指标 -->
+        <mxCell id="performance" value="📈 性能指标\n• 处理速度: 10万条/小时\n• 准确率: 95%+\n• 并发度: 50个节点\n• 延迟: &lt;100ms\n• 可用性: 99.9%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="950" y="160" width="150" height="120" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

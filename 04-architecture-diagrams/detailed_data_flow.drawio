@@ -1,0 +1,238 @@
+<mxfile host="app.diagrams.net" modified="2024-01-15T10:00:00.000Z" agent="5.0" etag="def456" version="22.1.16">
+  <diagram name="Transformer数据流详解" id="transformer-data-flow">
+    <mxGraphModel dx="2074" dy="1196" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="title" value="Transformer处理\"I love AI\"的完整数据流" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1f4e79;" vertex="1" parent="1">
+          <mxGeometry x="527" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 输入层 -->
+        <mxCell id="input-layer" value="📝 输入层" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="1200" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- 原始输入 -->
+        <mxCell id="raw-input" value="📄 原始输入\n\"I love AI\"" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 分词 -->
+        <mxCell id="tokenization" value="🔤 分词\n[\"I\", \"love\", \"AI\"]\n\n词汇表映射:\nI → 1234\nlove → 5678\nAI → 9012" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="150" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 词嵌入 -->
+        <mxCell id="embedding" value="🎯 词嵌入 (512维)\n\nI: [0.1, -0.3, 0.8, ...]\nlove: [0.5, 0.2, -0.1, ...]\nAI: [-0.2, 0.7, 0.4, ...]\n\n学习到的语义表示\n相似词距离更近" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="380" y="200" width="180" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 位置编码 -->
+        <mxCell id="position" value="📍 位置编码\n\nPE(pos,2i) = sin(pos/10000^(2i/512))\nPE(pos,2i+1) = cos(pos/10000^(2i/512))\n\n位置0: [0, 1, 0, 1, ...]\n位置1: [0.84, 0.54, 0.09, 0.99, ...]\n位置2: [0.91, -0.42, 0.18, 0.98, ...]\n\n与词嵌入相加" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="590" y="200" width="220" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 输入表示 -->
+        <mxCell id="input-repr" value="🔗 最终输入表示\n\nX = Embedding + Position\n\nI: [0.1, -0.3, 0.8, ...] + [0, 1, 0, ...]\nlove: [0.5, 0.2, -0.1, ...] + [0.84, 0.54, ...]\nAI: [-0.2, 0.7, 0.4, ...] + [0.91, -0.42, ...]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="840" y="200" width="280" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 自注意力机制 -->
+        <mxCell id="attention-section" value="🧠 自注意力机制" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="380" width="1200" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- QKV生成 -->
+        <mxCell id="qkv-generation" value="⚙️ QKV矩阵生成\n\nQ = X × Wq (查询: 我想了解什么?)\nK = X × Wk (键: 我能提供什么?)\nV = X × Wv (值: 我的具体内容)\n\n权重矩阵Wq, Wk, Wv是训练学习的" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="50" y="480" width="250" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Q矩阵 -->
+        <mxCell id="q-matrix" value="🔍 Q矩阵 (Query)\n\nI_q: [2.1, 1.8, 2.3, ...]\nlove_q: [1.5, 2.7, 1.9, ...]\nAI_q: [0.8, 1.2, 2.5, ...]\n\n表达每个词的\"查询需求\"" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#f44336;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="330" y="480" width="180" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- K矩阵 -->
+        <mxCell id="k-matrix" value="🔑 K矩阵 (Key)\n\nI_k: [1.5, 2.0, 1.2, ...]\nlove_k: [2.3, 1.1, 2.8, ...]\nAI_k: [1.7, 2.5, 1.4, ...]\n\n表达每个词能\"提供的信息\"" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="540" y="480" width="180" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- V矩阵 -->
+        <mxCell id="v-matrix" value="💎 V矩阵 (Value)\n\nI_v: [0.8, 1.5, 2.1, ...]\nlove_v: [1.9, 0.6, 1.3, ...]\nAI_v: [2.2, 1.8, 0.9, ...]\n\n包含词的\"实际语义内容\"" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#2196f3;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="750" y="480" width="180" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 注意力计算 -->
+        <mxCell id="attention-calc" value="⚡ 注意力分数计算\n\n1. Q·K^T 计算相似度:\nlove_q · I_k = 2.938\nlove_q · love_k = 3.456\nlove_q · AI_k = 4.123\n\n2. 缩放: 除以√dk = √64 = 8\n3. Softmax归一化\n4. 与V加权求和" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#c2185b;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="960" y="480" width="220" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 注意力权重可视化 -->
+        <mxCell id="attention-weights" value="📊 \"love\"的注意力权重\n\nlove → I: 0.2 (20%)\nlove → love: 0.3 (30%)\nlove → AI: 0.5 (50%)\n\n\"love\"最关注\"AI\",\n体现了动宾关系" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="50" y="650" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 多头注意力 -->
+        <mxCell id="multihead" value="🧠 多头注意力 (8个头)\n\nHead 1: 关注语法关系\nHead 2: 关注语义相似性\nHead 3: 关注情感色彩\nHead 4: 关注实体关系\n...\n\n每个头学习不同的语言现象\n最后拼接: Concat(head1,...,head8)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="280" y="650" width="250" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 残差连接 -->
+        <mxCell id="residual" value="🔄 残差连接\n\noutput = LayerNorm(X + MultiHead(X))\n\n• 解决梯度消失\n• 保留原始信息\n• 加速训练收敛" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="560" y="650" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 前馈网络 -->
+        <mxCell id="ffn-section" value="⚙️ 前馈神经网络" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8eaf6;strokeColor=#3f51b5;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="820" width="1200" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- FFN详细步骤 -->
+        <mxCell id="ffn-steps" value="🔄 FFN处理步骤\n\n1. 线性变换1: 512 → 2048维\n   W1 × x + b1\n\n2. ReLU激活: max(0, x)\n   引入非线性\n\n3. 线性变换2: 2048 → 512维\n   W2 × x + b2\n\n4. 残差连接 + 层归一化\n   LayerNorm(x + FFN(x))" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f8e9;strokeColor=#689f38;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="920" width="300" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 层堆叠 -->
+        <mxCell id="layer-stack" value="🏗️ 层堆叠 (6层编码器)\n\nLayer 1: 基础特征提取\nLayer 2: 局部模式识别\nLayer 3: 语法结构理解\nLayer 4: 语义关系建模\nLayer 5: 上下文整合\nLayer 6: 高级语义表示\n\n每层都有:\n• 多头自注意力\n• 前馈神经网络\n• 残差连接\n• 层归一化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="450" y="920" width="250" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 最终输出 -->
+        <mxCell id="output" value="📤 最终输出\n\n上下文感知的词向量表示:\n\nI': [1.2, -0.8, 1.5, ...] (主语特征)\nlove': [0.9, 1.7, -0.3, ...] (动作+情感)\nAI': [2.1, 0.4, 1.8, ...] (宾语+技术概念)\n\n每个词都融合了:\n• 自身语义\n• 上下文信息\n• 位置关系\n• 语法角色" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=14;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="920" width="300" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 核心洞察 -->
+        <mxCell id="insights" value="🔑 核心洞察\n\n1. 并行处理: 所有词同时计算\n2. 全局视野: 每个词都能\"看到\"所有其他词\n3. 动态权重: 注意力权重根据内容动态调整\n4. 多层抽象: 从词汇→语法→语义→概念\n5. 残差学习: 保持信息流动,避免梯度消失" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;fontSize=12;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="920" width="250" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 连接箭头 -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="raw-input" target="tokenization">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="tokenization" target="embedding">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="embedding" target="position">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="position" target="input-repr">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#388e3c;" edge="1" parent="1" source="qkv-generation" target="q-matrix">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow6" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#388e3c;" edge="1" parent="1" source="q-matrix" target="k-matrix">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow7" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#388e3c;" edge="1" parent="1" source="k-matrix" target="v-matrix">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#388e3c;" edge="1" parent="1" source="v-matrix" target="attention-calc">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow9" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d32f2f;" edge="1" parent="1" source="attention-weights" target="multihead">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d32f2f;" edge="1" parent="1" source="multihead" target="residual">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#ff6b35;" edge="1" parent="1" source="ffn-steps" target="layer-stack">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow12" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#ff6b35;" edge="1" parent="1" source="layer-stack" target="output">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow13" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#ff6b35;" edge="1" parent="1" source="output" target="insights">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+  <diagram name="架构对比分析" id="architecture-comparison">
+    <mxGraphModel dx="2074" dy="1196" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="comp-title" value="RNN vs LSTM vs Transformer 架构对比" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1f4e79;" vertex="1" parent="1">
+          <mxGeometry x="527" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN架构 -->
+        <mxCell id="rnn-section" value="🔄 RNN架构" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#f44336;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="400" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rnn-detail" value="🔄 RNN特点:\n• 顺序处理，无法并行计算\n• 严重的梯度消失问题\n• 只有短期记忆能力\n• 计算效率低，训练慢\n• 难以处理长序列\n\n处理\"I love AI\":\n1. 先处理\"I\" → h1\n2. 再处理\"love\" → h2 (可能忘记\"I\")\n3. 最后处理\"AI\" → h3 (很难记住\"I\")\n\n问题: 后面的词容易忘记前面的重要信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#f44336;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="180" width="400" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM架构 -->
+        <mxCell id="lstm-section" value="🧠 LSTM架构" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#2196f3;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="100" width="400" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lstm-detail" value="🧠 LSTM特点:\n• 门控机制控制信息流\n• 遗忘门: 决定丢弃什么信息\n• 输入门: 决定存储什么新信息\n• 输出门: 决定输出什么信息\n• 缓解了梯度消失问题\n• 具有长期记忆能力\n• 仍需要顺序处理\n\n处理\"I love AI\":\n1. 处理\"I\": 细胞状态记住主语\n2. 处理\"love\": 保持\"I\",添加动作信息\n3. 处理\"AI\": 整合主语、动作、宾语\n\n改进: 通过门控机制保持重要信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#2196f3;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="600" y="180" width="400" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Transformer架构 -->
+        <mxCell id="trans-section" value="⚡ Transformer架构" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="420" width="400" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="trans-detail" value="⚡ Transformer特点:\n• 完全并行计算，无需顺序处理\n• 自注意力机制捕捉全局依赖\n• 多头注意力关注不同语义层面\n• 位置编码提供序列位置信息\n• 残差连接和层归一化稳定训练\n• 高计算效率，易于并行化\n• 可以处理任意长度序列\n\n处理\"I love AI\":\n1. 同时处理所有词: [\"I\", \"love\", \"AI\"]\n2. 每个词都能直接\"看到\"其他所有词\n3. \"love\"能直接关注到\"I\"和\"AI\"\n4. 动态计算注意力权重\n\n突破: 全局视野 + 并行计算 + 动态关注" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="350" y="500" width="400" height="220" as="geometry" />
+        </mxCell>
+        
+        <!-- 处理方式对比 -->
+        <mxCell id="processing-comparison" value="🔄 处理方式对比" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="760" width="900" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="processing-details" value="RNN处理方式:\nt=1: h1 = f(\"I\", h0)\nt=2: h2 = f(\"love\", h1) ← 可能忘记\"I\"\nt=3: h3 = f(\"AI\", h2) ← 很难记住\"I\"\n\nLSTM处理方式:\nt=1: (h1, c1) = LSTM(\"I\", h0, c0)\nt=2: (h2, c2) = LSTM(\"love\", h1, c1) ← 门控保持\"I\"\nt=3: (h3, c3) = LSTM(\"AI\", h2, c2) ← 仍能记住\"I\"\n\nTransformer处理方式:\n同时计算: Attention([\"I\", \"love\", \"AI\"])\n• \"I\"直接与\"love\"、\"AI\"交互\n• \"love\"直接与\"I\"、\"AI\"交互\n• \"AI\"直接与\"I\"、\"love\"交互" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="840" width="900" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- 性能对比表格 -->
+        <mxCell id="comparison-table" value="📊 性能对比表" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1020" width="900" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="table-content" value="\n特性\t\t\tRNN\t\tLSTM\t\tTransformer\n\n并行计算:\t\t❌ 无法并行\t❌ 无法并行\t✅ 完全并行\n\n长期依赖:\t\t❌ 梯度消失\t⚠️ 部分缓解\t✅ 全局建模\n\n训练速度:\t\t🐌 很慢\t\t🐢 较慢\t\t🚀 很快\n\n内存使用:\t\t💚 低\t\t💛 中等\t\t❤️ 高\n\n可解释性:\t\t❌ 黑盒\t\t❌ 黑盒\t\t✅ 注意力可视化\n\n序列长度:\t\t❌ 受限\t\t⚠️ 较好\t\t✅ 任意长度\n\n计算复杂度:\t\tO(n)\t\tO(n)\t\tO(n²)\n\n适用场景:\t\t简单序列\t\t中等复杂度\t\t复杂NLP任务" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#c2185b;fontSize=12;align=left;fontFamily=monospace;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1100" width="900" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- 架构演进智慧 -->
+        <mxCell id="evolution-wisdom" value="🧬 架构演进的智慧" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1330" width="900" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="wisdom-content" value="🔍 核心问题识别:\n• RNN: 信息传递链条太长，容易断裂\n• LSTM: 门控机制是好的，但仍是顺序处理\n• Transformer: 为什么不让每个词直接与所有词对话?\n\n💡 设计哲学转变:\n• 从\"顺序依赖\"到\"全局交互\"\n• 从\"隐式记忆\"到\"显式注意力\"\n• 从\"固定权重\"到\"动态权重\"\n\n🚀 突破性洞察:\n1. 并行性: 时间就是金钱，为什么要串行?\n2. 全局性: 语言理解需要全局视野\n3. 动态性: 不同上下文需要不同的关注模式\n4. 可解释性: 注意力权重让模型决策透明化\n\n🎯 成功的关键:\n• 问题本质的深度思考\n• 大胆的架构创新\n• 工程实现的精妙设计\n• 大规模数据的验证" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1410" width="900" height="250" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

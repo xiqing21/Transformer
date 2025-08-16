@@ -1,0 +1,223 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="5.0" etag="xxx" version="22.1.16" type="device">
+  <diagram name="Transformer深度解析架构图" id="transformer-deep-analysis">
+    <mxGraphModel dx="2074" dy="1196" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="title" value="Transformer深度解析：数值计算详解" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#1f4e79;" vertex="1" parent="1">
+          <mxGeometry x="527" y="40" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 主要部分容器 -->
+        <mxCell id="main-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#dee2e6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="1494" height="2100" as="geometry" />
+        </mxCell>
+        
+        <!-- 第一部分：注意力机制 -->
+        <mxCell id="attention-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="160" width="680" height="480" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="attention-title" value="🔍 第一部分：注意力机制的数值计算详解" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="140" y="180" width="640" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 输入示例 -->
+        <mxCell id="input-example" value="📊 输入示例：&quot;I love AI&quot;\n分词：[&quot;I&quot;, &quot;love&quot;, &quot;AI&quot;]\n词嵌入：\n&quot;I&quot; → [1.0, 0.5, 0.2]\n&quot;love&quot; → [0.3, 1.2, 0.8]\n&quot;AI&quot; → [0.7, 0.1, 1.5]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="140" y="220" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- QKV矩阵生成 -->
+        <mxCell id="qkv-generation" value="🔧 Q、K、V矩阵生成\n\nWq (Query权重矩阵)\nWk (Key权重矩阵)\nWv (Value权重矩阵)\n\n通过学习得到的权重矩阵\n计算每个词的Q、K、V向量" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="360" y="220" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- 注意力计算 -->
+        <mxCell id="attention-calc" value="🎯 注意力分数计算\n\n1. 计算Q·K^T\n2. 除以√d_k缩放\n3. 应用Softmax归一化\n4. 与V相乘得到输出\n\n结果：融合了上下文信息\n的新词表示" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="220" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- QKV解释 -->
+        <mxCell id="qkv-explanation" value="🤔 为什么要分为Q、K、V？\n\n🏪 图书馆查询系统比喻：\n• Q (Query): 你的需求描述\n• K (Key): 书籍的标签/关键词\n• V (Value): 书籍的实际内容\n\n查询过程：需求与标签匹配，根据权重提取内容" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ffa000;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="140" y="380" width="640" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 训练过程 -->
+        <mxCell id="training-process" value="🏋️ 权重矩阵训练过程\n\n1. 随机初始化Wq、Wk、Wv\n2. 通过大量文本数据学习\n3. 反向传播调整参数\n4. 学会正确的注意力模式\n\n最终：Wq学会&quot;提问艺术&quot;，Wk学会&quot;标签艺术&quot;，Wv学会&quot;提取艺术&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="140" y="500" width="640" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 第二部分：多头注意力 -->
+        <mxCell id="multihead-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="840" y="160" width="680" height="480" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="multihead-title" value="🎭 第二部分：多头注意力机制详解" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="860" y="180" width="640" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 多头原理 -->
+        <mxCell id="multihead-principle" value="🤔 为什么需要多个&quot;头&quot;？\n\n同时关注不同语言现象：\n• 语法关系：主语、谓语、宾语\n• 语义关系：词意相近性\n• 情感色彩：积极、消极、中性\n• 时间关系：过去、现在、将来\n\n每个头像专门的分析师" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="860" y="220" width="300" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- 多头实现 -->
+        <mxCell id="multihead-impl" value="🔧 多头注意力实现\n\n1. 分割输入（512维→8个64维）\n2. 每个头独立计算注意力\n3. 不同头关注不同模式\n4. 拼接所有头的输出\n5. 线性变换得到最终结果\n\n优势：并行处理、多角度理解" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="220" width="320" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- 头的专业化 -->
+        <mxCell id="head-specialization" value="🎯 不同头的专业化示例\n\n头1（语法关注）：\n&quot;love&quot;对&quot;I&quot;: 0.70 (主谓关系强)\n&quot;love&quot;对&quot;AI&quot;: 0.15 (宾语关系一般)\n\n头2（语义关注）：\n&quot;love&quot;对&quot;I&quot;: 0.20 (语义关联一般)\n&quot;love&quot;对&quot;AI&quot;: 0.50 (语义关联强)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="860" y="380" width="640" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 多头优势 -->
+        <mxCell id="multihead-advantages" value="🎯 多头注意力优势\n\n1. 并行处理：8个头同时计算\n2. 多角度理解：每个头关注不同现象\n3. 信息丰富：综合多个视角\n4. 鲁棒性强：某个头出错，其他头补偿" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ffa000;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="860" y="500" width="640" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 第三部分：前馈神经网络 -->
+        <mxCell id="ffn-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="680" width="680" height="480" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ffn-title" value="⚙️ 第三部分：前馈神经网络的数值详解" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#4caf50;" vertex="1" parent="1">
+          <mxGeometry x="140" y="700" width="640" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- FFN结构 -->
+        <mxCell id="ffn-structure" value="🔧 前馈网络结构\n\n输入：512维向量\n↓\n第一层线性变换：512→2048维\n↓\nReLU激活函数\n↓\n第二层线性变换：2048→512维\n↓\n输出：512维向量" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="140" y="740" width="200" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 扩展阶段 -->
+        <mxCell id="expansion-stage" value="📊 扩展阶段（512→2048）\n\n🎯 扩展的意义：\n• 提供更大的&quot;思考空间&quot;\n• 允许更复杂的特征组合\n• 类似&quot;头脑风暴&quot;\n\n计算示例：\n输入×W1+b1 = 扩展向量\n[0.5,-0.2,0.8,0.1]→[0.61,-0.23,1.45,...]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="360" y="740" width="200" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- ReLU激活 -->
+        <mxCell id="relu-activation" value="🔥 ReLU激活函数\n\nf(x) = max(0, x)\n\n作用：\n1. 非线性：学习复杂模式\n2. 稀疏性：负值置零\n3. 选择性：保留有用特征\n\n示例：\n[0.61,-0.23,1.45,0.78]\n↓ ReLU\n[0.61,0.00,1.45,0.78]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="580" y="740" width="200" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 压缩阶段 -->
+        <mxCell id="compression-stage" value="🎯 压缩阶段（2048→512）\n\n压缩的意义：\n• 总结详细分析为精炼理解\n• 保留最重要信息\n• 过滤冗余内容\n• 类似文章摘要\n\n为什么扩展-压缩？\n扩展：提供思考空间\n压缩：提炼核心观点\n非线性变换学习复杂模式" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ffa000;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="140" y="940" width="640" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 数学直觉 -->
+        <mxCell id="math-intuition" value="🤔 数学直觉\n\n没有扩展（线性）：输出 = 输入×W + b\n有扩展-压缩（非线性）：输出 = ReLU(输入×W1+b1)×W2+b2\n\n非线性变换让网络学习更复杂的模式！" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1080" width="640" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 第四部分：解码器机制 -->
+        <mxCell id="decoder-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ffa000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="840" y="680" width="680" height="480" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="decoder-title" value="🎭 第四部分：解码器详细机制" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#ffa000;" vertex="1" parent="1">
+          <mxGeometry x="860" y="700" width="640" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 解码器结构 -->
+        <mxCell id="decoder-structure" value="🏗️ 解码器完整结构\n\n解码器需要：\n1. 理解已生成内容（掩码自注意力）\n2. 参考编码器理解（编码器-解码器注意力）\n3. 生成下一个词（输出层）\n\n比编码器更复杂！" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="860" y="740" width="300" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- 生成过程 -->
+        <mxCell id="generation-process" value="🎯 生成过程：&quot;I love you&quot;→&quot;我爱你&quot;\n\n步骤1：生成&quot;我&quot;\n• 掩码自注意力：只看&lt;开始&gt;\n• 编码器-解码器注意力：关注英文\n• 输出层：选择概率最高的&quot;我&quot;\n\n步骤2：生成&quot;爱&quot;\n• 掩码自注意力：看&lt;开始&gt;+&quot;我&quot;\n• 关注&quot;love&quot;信息\n• 选择&quot;爱&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="740" width="320" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- 掩码机制 -->
+        <mxCell id="mask-mechanism" value="🎭 掩码机制的重要性\n\n🚫 没有掩码：生成&quot;爱&quot;时能看到[&lt;开始&gt;,&quot;我&quot;,&quot;爱&quot;,&quot;你&quot;] - 这是作弊！\n✅ 有掩码：生成&quot;爱&quot;时只能看到[&lt;开始&gt;,&quot;我&quot;,???,???] - 必须真正理解\n\n掩码矩阵确保模型只能看到当前位置之前的信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="860" y="900" width="640" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 训练vs推理 -->
+        <mxCell id="train-vs-inference" value="🔄 训练vs推理的区别\n\n训练阶段（Teacher Forcing）：\n• 输入：[&lt;开始&gt;,&quot;我&quot;,&quot;爱&quot;] 目标：预测&quot;你&quot;\n• 可以并行计算所有位置\n• 训练速度快\n\n推理阶段（自回归生成）：\n• 步骤1：[&lt;开始&gt;]→生成&quot;我&quot;\n• 步骤2：[&lt;开始&gt;,&quot;我&quot;]→生成&quot;爱&quot;\n• 必须顺序生成，速度较慢" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="860" y="1020" width="640" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 第五部分：训练过程 -->
+        <mxCell id="training-section" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1200" width="1400" height="400" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="training-title" value="🎓 第五部分：训练vs推理阶段详解" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#e91e63;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1220" width="1360" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 训练前状态 -->
+        <mxCell id="before-training" value="🔧 训练前状态\n\n所有权重矩阵随机初始化：\nWq = [[随机数,随机数,...],...]\nWk = [[随机数,随机数,...],...]\nWv = [[随机数,随机数,...],...]\n\n此时模型输出随机，无意义" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1260" width="280" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 训练过程 -->
+        <mxCell id="training-steps" value="📚 训练过程\n\n1. 前向传播：输入&quot;I love you&quot;\n   当前输出：&quot;我喜欢猫&quot;（错误）\n   正确答案：&quot;我爱你&quot;\n\n2. 计算损失：交叉熵损失函数\n\n3. 反向传播：计算梯度\n   ∂Loss/∂Wq, ∂Loss/∂Wk, ∂Loss/∂Wv\n\n4. 更新参数：\n   Wq_new = Wq_old - 学习率×梯度" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="440" y="1260" width="320" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 训练完成后 -->
+        <mxCell id="after-training" value="🎯 训练完成后\n\n✅ 训练好的注意力权重：\n当看到&quot;love&quot;时，Wq生成Query向量\n与&quot;you&quot;的Key向量点积很大\n从而让&quot;love&quot;高度关注&quot;you&quot;\n\n✅ 训练好的前馈网络：\n学会识别动词、名词模式\n学会综合语义信息\n\n这不是人工设计，而是数据学习！" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="1260" width="320" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 推理阶段 -->
+        <mxCell id="inference-stage" value="🔄 推理阶段\n\n使用训练好的参数：\n\n输入：&quot;I love AI&quot;\n1. 使用训练好的Wq、Wk、Wv\n2. 注意力机制自动关注相关词汇\n3. 前馈网络处理语义信息\n4. 解码器逐步生成翻译\n\n输出：&quot;我爱人工智能&quot;\n\n关键：训练学习翻译能力\n      推理应用翻译能力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ffa000;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="1260" width="380" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 核心洞察 -->
+        <mxCell id="core-insights" value="🔑 核心洞察\n\nTransformer的&quot;智能&quot;不是魔法，而是：\n• 精巧的数学设计（Q、K、V分离，多头注意力，前馈网络）\n• 大量数据训练（学习语言统计规律和语义关联）\n• 矩阵乘法实现信息编码、传递和组合\n• 升维降维机制在高维空间处理复杂语义关系\n\n随着架构优化和规模扩大，展现出越来越强大的语言理解和生成能力！" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1400" width="1360" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 优化技术概览 -->
+        <mxCell id="optimization-overview" value="🚀 架构优化技术概览\n\n• 高效注意力：Sparse Attention、Linear Attention、Flash Attention\n• 位置编码改进：相对位置编码、RoPE、ALiBi\n• 参数高效微调：LoRA、AdaLoRA、Prefix Tuning\n• 模型规模化：混合专家模型(MoE)、模型并行、ZeRO优化器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#6c757d;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1500" width="1360" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 连接线 -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="280" as="sourcePoint" />
+            <mxPoint x="350" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="570" y="280" as="sourcePoint" />
+            <mxPoint x="570" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 数据流箭头 -->
+        <mxCell id="data-flow1" value="词嵌入" style="endArrow=classic;html=1;rounded=0;strokeColor=#1976d2;strokeWidth=2;fontColor=#1976d2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="290" as="sourcePoint" />
+            <mxPoint x="350" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="data-flow2" value="Q,K,V计算" style="endArrow=classic;html=1;rounded=0;strokeColor=#7b1fa2;strokeWidth=2;fontColor=#7b1fa2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="570" y="290" as="sourcePoint" />
+            <mxPoint x="570" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="data-flow3" value="注意力输出" style="endArrow=classic;html=1;rounded=0;strokeColor=#4caf50;strokeWidth=2;fontColor=#4caf50;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="360" as="sourcePoint" />
+            <mxPoint x="680" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

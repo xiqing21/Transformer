@@ -106,7 +106,7 @@
         </mxCell>
         
         <!-- 核心洞察 -->
-        <mxCell id="insights" value="🔑 核心洞察\n\n1. 并行处理: 所有词同时计算\n2. 全局视野: 每个词都能\"看到\"所有其他词\n3. 动态权重: 注意力权重根据内容动态调整\n4. 多层抽象: 从词汇→语法→语义→概念\n5. 残差学习: 保持信息流动,避免梯度消失" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;fontSize=12;align=left;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="insights" value="🔑 核心洞察\n\n1. 并行处理: 所有词同时计算\n2. 全局视野: 每个词都能&quot;看到&quot;所有其他词\n3. 动态权重: 注意力权重根据内容动态调整\n4. 多层抽象: 从词汇→语法→语义→概念\n5. 残差学习: 保持信息流动,避免梯度消失" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;fontSize=12;align=left;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="1100" y="920" width="250" height="180" as="geometry" />
         </mxCell>
         
@@ -183,7 +183,7 @@
           <mxGeometry x="100" y="100" width="400" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="rnn-detail" value="🔄 RNN特点:\n• 顺序处理，无法并行计算\n• 严重的梯度消失问题\n• 只有短期记忆能力\n• 计算效率低，训练慢\n• 难以处理长序列\n\n处理\"I love AI\":\n1. 先处理\"I\" → h1\n2. 再处理\"love\" → h2 (可能忘记\"I\")\n3. 最后处理\"AI\" → h3 (很难记住\"I\")\n\n问题: 后面的词容易忘记前面的重要信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#f44336;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="rnn-detail" value="🔄 RNN特点:\n• 顺序处理，无法并行计算\n• 严重的梯度消失问题\n• 只有短期记忆能力\n• 计算效率低，训练慢\n• 难以处理长序列\n\n处理&quot;I love AI&quot;:\n1. 先处理&quot;I&quot; → h1\n2. 再处理&quot;love&quot; → h2 (可能忘记&quot;I&quot;)\n3. 最后处理&quot;AI&quot; → h3 (很难记住&quot;I&quot;)\n\n问题: 后面的词容易忘记前面的重要信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#f44336;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="100" y="180" width="400" height="200" as="geometry" />
         </mxCell>
         
@@ -192,7 +192,7 @@
           <mxGeometry x="600" y="100" width="400" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="lstm-detail" value="🧠 LSTM特点:\n• 门控机制控制信息流\n• 遗忘门: 决定丢弃什么信息\n• 输入门: 决定存储什么新信息\n• 输出门: 决定输出什么信息\n• 缓解了梯度消失问题\n• 具有长期记忆能力\n• 仍需要顺序处理\n\n处理\"I love AI\":\n1. 处理\"I\": 细胞状态记住主语\n2. 处理\"love\": 保持\"I\",添加动作信息\n3. 处理\"AI\": 整合主语、动作、宾语\n\n改进: 通过门控机制保持重要信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#2196f3;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="lstm-detail" value="🧠 LSTM特点:\n• 门控机制控制信息流\n• 遗忘门: 决定丢弃什么信息\n• 输入门: 决定存储什么新信息\n• 输出门: 决定输出什么信息\n• 缓解了梯度消失问题\n• 具有长期记忆能力\n• 仍需要顺序处理\n\n处理&quot;I love AI&quot;:\n1. 处理&quot;I&quot;: 细胞状态记住主语\n2. 处理&quot;love&quot;: 保持&quot;I&quot;,添加动作信息\n3. 处理&quot;AI&quot;: 整合主语、动作、宾语\n\n改进: 通过门控机制保持重要信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#2196f3;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="600" y="180" width="400" height="200" as="geometry" />
         </mxCell>
         
@@ -201,7 +201,7 @@
           <mxGeometry x="350" y="420" width="400" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="trans-detail" value="⚡ Transformer特点:\n• 完全并行计算，无需顺序处理\n• 自注意力机制捕捉全局依赖\n• 多头注意力关注不同语义层面\n• 位置编码提供序列位置信息\n• 残差连接和层归一化稳定训练\n• 高计算效率，易于并行化\n• 可以处理任意长度序列\n\n处理\"I love AI\":\n1. 同时处理所有词: [\"I\", \"love\", \"AI\"]\n2. 每个词都能直接\"看到\"其他所有词\n3. \"love\"能直接关注到\"I\"和\"AI\"\n4. 动态计算注意力权重\n\n突破: 全局视野 + 并行计算 + 动态关注" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="trans-detail" value="⚡ Transformer特点:\n• 完全并行计算，无需顺序处理\n• 自注意力机制捕捉全局依赖\n• 多头注意力关注不同语义层面\n• 位置编码提供序列位置信息\n• 残差连接和层归一化稳定训练\n• 高计算效率，易于并行化\n• 可以处理任意长度序列\n\n处理&quot;I love AI&quot;:\n1. 同时处理所有词: [&quot;I&quot;, &quot;love&quot;, &quot;AI&quot;]\n2. 每个词都能直接&quot;看到&quot;其他所有词\n3. &quot;love&quot;能直接关注到&quot;I&quot;和&quot;AI&quot;\n4. 动态计算注意力权重\n\n突破: 全局视野 + 并行计算 + 动态关注" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="350" y="500" width="400" height="220" as="geometry" />
         </mxCell>
         
@@ -210,7 +210,7 @@
           <mxGeometry x="100" y="760" width="900" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="processing-details" value="RNN处理方式:\nt=1: h1 = f(\"I\", h0)\nt=2: h2 = f(\"love\", h1) ← 可能忘记\"I\"\nt=3: h3 = f(\"AI\", h2) ← 很难记住\"I\"\n\nLSTM处理方式:\nt=1: (h1, c1) = LSTM(\"I\", h0, c0)\nt=2: (h2, c2) = LSTM(\"love\", h1, c1) ← 门控保持\"I\"\nt=3: (h3, c3) = LSTM(\"AI\", h2, c2) ← 仍能记住\"I\"\n\nTransformer处理方式:\n同时计算: Attention([\"I\", \"love\", \"AI\"])\n• \"I\"直接与\"love\"、\"AI\"交互\n• \"love\"直接与\"I\"、\"AI\"交互\n• \"AI\"直接与\"I\"、\"love\"交互" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="processing-details" value="RNN处理方式:\nt=1: h1 = f(&quot;I&quot;, h0)\nt=2: h2 = f(&quot;love&quot;, h1) ← 可能忘记&quot;I&quot;\nt=3: h3 = f(&quot;AI&quot;, h2) ← 很难记住&quot;I&quot;\n\nLSTM处理方式:\nt=1: (h1, c1) = LSTM(&quot;I&quot;, h0, c0)\nt=2: (h2, c2) = LSTM(&quot;love&quot;, h1, c1) ← 门控保持&quot;I&quot;\nt=3: (h3, c3) = LSTM(&quot;AI&quot;, h2, c2) ← 仍能记住&quot;I&quot;\n\nTransformer处理方式:\n同时计算: Attention([&quot;I&quot;, &quot;love&quot;, &quot;AI&quot;])\n• &quot;I&quot;直接与&quot;love&quot;、&quot;AI&quot;交互\n• &quot;love&quot;直接与&quot;I&quot;、&quot;AI&quot;交互\n• &quot;AI&quot;直接与&quot;I&quot;、&quot;love&quot;交互" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="100" y="840" width="900" height="150" as="geometry" />
         </mxCell>
         
@@ -228,7 +228,7 @@
           <mxGeometry x="100" y="1330" width="900" height="50" as="geometry" />
         </mxCell>
         
-        <mxCell id="wisdom-content" value="🔍 核心问题识别:\n• RNN: 信息传递链条太长，容易断裂\n• LSTM: 门控机制是好的，但仍是顺序处理\n• Transformer: 为什么不让每个词直接与所有词对话?\n\n💡 设计哲学转变:\n• 从\"顺序依赖\"到\"全局交互\"\n• 从\"隐式记忆\"到\"显式注意力\"\n• 从\"固定权重\"到\"动态权重\"\n\n🚀 突破性洞察:\n1. 并行性: 时间就是金钱，为什么要串行?\n2. 全局性: 语言理解需要全局视野\n3. 动态性: 不同上下文需要不同的关注模式\n4. 可解释性: 注意力权重让模型决策透明化\n\n🎯 成功的关键:\n• 问题本质的深度思考\n• 大胆的架构创新\n• 工程实现的精妙设计\n• 大规模数据的验证" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="wisdom-content" value="🔍 核心问题识别:\n• RNN: 信息传递链条太长，容易断裂\n• LSTM: 门控机制是好的，但仍是顺序处理\n• Transformer: 为什么不让每个词直接与所有词对话?\n\n💡 设计哲学转变:\n• 从&quot;顺序依赖&quot;到&quot;全局交互&quot;\n• 从&quot;隐式记忆&quot;到&quot;显式注意力&quot;\n• 从&quot;固定权重&quot;到&quot;动态权重&quot;\n\n🚀 突破性洞察:\n1. 并行性: 时间就是金钱，为什么要串行?\n2. 全局性: 语言理解需要全局视野\n3. 动态性: 不同上下文需要不同的关注模式\n4. 可解释性: 注意力权重让模型决策透明化\n\n🎯 成功的关键:\n• 问题本质的深度思考\n• 大胆的架构创新\n• 工程实现的精妙设计\n• 大规模数据的验证" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="100" y="1410" width="900" height="250" as="geometry" />
         </mxCell>
         

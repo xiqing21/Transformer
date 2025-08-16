@@ -1,0 +1,357 @@
+<mxfile host="app.diagrams.net" modified="2024-01-15T10:00:00.000Z" agent="5.0" etag="abc123" version="22.1.16">
+  <diagram name="Transformer详细架构图" id="transformer-detailed">
+    <mxGraphModel dx="2074" dy="1196" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="title" value="Transformer架构详解 - 翻译案例: I love you → 我爱你" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="327" y="20" width="1000" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 输入部分 -->
+        <mxCell id="input-section" value="输入: I love you" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="200" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- 分词结果 -->
+        <mxCell id="tokenization" value="分词结果:\n[I] [love] [you]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="180" width="200" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 编码器部分 -->
+        <mxCell id="encoder-title" value="编码器 (Encoder)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="400" y="100" width="200" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 输入嵌入 -->
+        <mxCell id="input-embedding" value="输入嵌入 (Input Embedding)\n\n将词转换为向量:\nI → [0.2, 0.8, 0.1, ...]\nlove → [0.9, 0.3, 0.7, ...]\nyou → [0.1, 0.6, 0.4, ...]\n\n目的: 让计算机理解词的含义" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="250" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 位置编码 -->
+        <mxCell id="positional-encoding" value="位置编码 (Positional Encoding)\n\n添加位置信息:\nI(位置1) → [0.2+0.0, 0.8+0.1, ...]\nlove(位置2) → [0.9+0.5, 0.3+0.2, ...]\nyou(位置3) → [0.1+0.8, 0.6+0.3, ...]\n\n目的: 让模型知道词的顺序" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="280" width="250" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 多头自注意力 -->
+        <mxCell id="multi-head-attention" value="多头自注意力 (Multi-Head Attention)\n\n分析词之间的关系:\n• I 和 love 的关系: 0.8 (主语-谓语)\n• love 和 you 的关系: 0.9 (谓语-宾语)\n• I 和 you 的关系: 0.6 (主语-宾语)\n\n结果: 每个词都包含了其他词的信息\n\n目的: 理解句子中词与词的关系" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="420" width="300" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- 残差连接和层归一化1 -->
+        <mxCell id="residual-norm-1" value="残差连接 + 层归一化\n\n残差连接: 新向量 = 原向量 + 注意力结果\n层归一化: 标准化向量，防止梯度爆炸\n\n目的: 保持训练稳定，防止信息丢失" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="720" y="420" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 前馈神经网络 -->
+        <mxCell id="feed-forward" value="前馈神经网络 (Feed Forward)\n\n对每个词的向量进行变换:\nI: [0.3, 0.9, 0.2] → [0.7, 0.4, 0.8]\nlove: [0.8, 0.5, 0.6] → [0.2, 0.9, 0.3]\nyou: [0.4, 0.7, 0.1] → [0.6, 0.1, 0.9]\n\n目的: 增强特征表达能力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="580" width="300" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 残差连接和层归一化2 -->
+        <mxCell id="residual-norm-2" value="残差连接 + 层归一化\n\n再次应用残差连接和归一化\n\n最终编码器输出:\n每个词都包含了完整的上下文信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="720" y="580" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 解码器部分 -->
+        <mxCell id="decoder-title" value="解码器 (Decoder)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="100" width="200" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 解码器输入 -->
+        <mxCell id="decoder-input" value="解码器输入\n\n训练时: [START] 我 爱\n推理时: [START] (逐步生成)\n\n目的: 生成目标语言序列" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="140" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 掩码自注意力 -->
+        <mxCell id="masked-attention" value="掩码自注意力\n\n只能看到前面的词:\n• 生成'我'时，只能看到[START]\n• 生成'爱'时，只能看到[START]我\n• 生成'你'时，只能看到[START]我爱\n\n目的: 防止看到未来信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="260" width="250" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 编码器-解码器注意力 -->
+        <mxCell id="encoder-decoder-attention" value="编码器-解码器注意力\n\n解码器关注编码器的输出:\n• 生成'我'时，重点关注'I'\n• 生成'爱'时，重点关注'love'\n• 生成'你'时，重点关注'you'\n\n目的: 建立源语言和目标语言的对应关系" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="400" width="280" height="130" as="geometry" />
+        </mxCell>
+        
+        <!-- 解码器前馈网络 -->
+        <mxCell id="decoder-ffn" value="前馈神经网络\n\n对解码器特征进行变换\n增强表达能力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="550" width="200" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 输出层 -->
+        <mxCell id="output-layer" value="输出层 (Output Layer)\n\n将向量转换为词概率:\n词汇表中每个词的概率\n选择概率最高的词\n\n最终输出: 我 爱 你" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="650" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 最终输出 -->
+        <mxCell id="final-output" value="最终输出: 我爱你" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="700" width="200" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- 连接箭头 -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="input-section" target="input-embedding">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="input-embedding" target="positional-encoding">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="positional-encoding" target="multi-head-attention">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="multi-head-attention" target="residual-norm-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="multi-head-attention" target="feed-forward">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="feed-forward" target="residual-norm-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#d79b00;strokeWidth=3;" edge="1" parent="1" source="residual-norm-2" target="encoder-decoder-attention">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="decoder-input" target="masked-attention">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="masked-attention" target="encoder-decoder-attention">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="encoder-decoder-attention" target="decoder-ffn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="decoder-ffn" target="output-layer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="output-layer" target="final-output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 说明文字 -->
+        <mxCell id="explanation" value="关键创新点:\n1. 自注意力机制: 每个词都能直接关注到句子中的任何其他词\n2. 并行计算: 所有位置可以同时处理，不需要逐个处理\n3. 位置编码: 通过数学方式告诉模型词的位置信息\n4. 多头注意力: 从多个角度理解词与词的关系" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="280" height="120" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+  <diagram name="RNN架构对比" id="rnn-comparison">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="rnn-title" value="RNN架构 - 同样的翻译任务: I love you → 我爱你" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="327" y="20" width="1000" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN编码器 -->
+        <mxCell id="rnn-encoder-title" value="RNN编码器 - 顺序处理" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="300" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN步骤1 -->
+        <mxCell id="rnn-step1" value="步骤1: 处理 'I'\n\n输入: I的词向量\n隐藏状态: h0 = [0,0,0,...]\n输出: h1 = [0.3, 0.7, 0.2, ...]\n\n问题: 只能看到'I'，不知道后面有什么" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#b85450;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN步骤2 -->
+        <mxCell id="rnn-step2" value="步骤2: 处理 'love'\n\n输入: love的词向量 + h1\n输出: h2 = [0.6, 0.4, 0.8, ...]\n\n问题: 对'I'的记忆开始模糊\n无法直接关注到'I'" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#b85450;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="320" y="120" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN步骤3 -->
+        <mxCell id="rnn-step3" value="步骤3: 处理 'you'\n\n输入: you的词向量 + h2\n输出: h3 = [0.2, 0.9, 0.1, ...]\n\n问题: 对'I'的信息几乎丢失\n长距离依赖问题严重" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#b85450;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="540" y="120" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN解码器 -->
+        <mxCell id="rnn-decoder-title" value="RNN解码器 - 顺序生成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="100" y="280" width="300" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN解码步骤1 -->
+        <mxCell id="rnn-decode1" value="生成 '我'\n\n输入: [START] + h3\n输出: '我' + 新隐藏状态\n\n问题: 只能依赖最后的隐藏状态h3\n可能丢失了'I'的重要信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="320" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN解码步骤2 -->
+        <mxCell id="rnn-decode2" value="生成 '爱'\n\n输入: '我' + 上一步隐藏状态\n输出: '爱' + 新隐藏状态\n\n问题: 无法直接关注到'love'\n依赖链式传递的信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="320" y="320" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN解码步骤3 -->
+        <mxCell id="rnn-decode3" value="生成 '你'\n\n输入: '爱' + 上一步隐藏状态\n输出: '你'\n\n问题: 对原始'you'的对应关系\n可能不够准确" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="540" y="320" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN问题总结 -->
+        <mxCell id="rnn-problems" value="RNN的主要问题:\n\n1. 顺序处理: 必须等前一个词处理完才能处理下一个\n2. 长距离依赖: 句子越长，前面的信息丢失越严重\n3. 梯度消失: 反向传播时梯度逐渐消失\n4. 无法并行: 训练和推理都很慢\n5. 信息瓶颈: 所有信息都要压缩到固定大小的隐藏状态" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="800" y="120" width="350" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- 连接箭头 -->
+        <mxCell id="rnn-arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="rnn-step1" target="rnn-step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rnn-arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="rnn-step2" target="rnn-step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rnn-arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="rnn-step3" target="rnn-decode1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rnn-arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="rnn-decode1" target="rnn-decode2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rnn-arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="rnn-decode2" target="rnn-decode3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+  <diagram name="LSTM架构对比" id="lstm-comparison">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="lstm-title" value="LSTM架构 - 同样的翻译任务: I love you → 我爱你" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="327" y="20" width="1000" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM编码器 -->
+        <mxCell id="lstm-encoder-title" value="LSTM编码器 - 改进的顺序处理" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM步骤1 -->
+        <mxCell id="lstm-step1" value="步骤1: 处理 'I'\n\n输入门: 决定接受多少新信息\n遗忘门: 决定丢弃多少旧信息\n输出门: 决定输出多少信息\n\n细胞状态: C1 = [0.8, 0.3, 0.6, ...]\n隐藏状态: h1 = [0.4, 0.7, 0.2, ...]\n\n改进: 能更好地保存'I'的信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="220" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM步骤2 -->
+        <mxCell id="lstm-step2" value="步骤2: 处理 'love'\n\n遗忘门: 决定保留多少'I'的信息\n输入门: 决定接受多少'love'的信息\n\n细胞状态: C2 = [0.6, 0.8, 0.4, ...]\n隐藏状态: h2 = [0.7, 0.5, 0.9, ...]\n\n改进: 通过门控机制更好地\n平衡新旧信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="340" y="120" width="220" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM步骤3 -->
+        <mxCell id="lstm-step3" value="步骤3: 处理 'you'\n\n门控机制继续工作:\n- 保留重要的历史信息\n- 整合'you'的新信息\n\n细胞状态: C3 = [0.5, 0.9, 0.7, ...]\n隐藏状态: h3 = [0.3, 0.8, 0.6, ...]\n\n改进: 长距离依赖问题有所缓解\n但仍然存在信息瓶颈" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="580" y="120" width="220" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM解码器 -->
+        <mxCell id="lstm-decoder-title" value="LSTM解码器 - 改进的顺序生成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM解码步骤1 -->
+        <mxCell id="lstm-decode1" value="生成 '我'\n\n输入: [START] + C3 + h3\n门控机制决定:\n- 使用多少编码器信息\n- 保留多少解码器状态\n\n输出: '我' + 新的C和h\n\n改进: 更好地利用编码器信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#0066cc;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="340" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM解码步骤2 -->
+        <mxCell id="lstm-decode2" value="生成 '爱'\n\n门控机制继续工作:\n- 记住已生成的'我'\n- 关注编码器中的'love'信息\n\n输出: '爱' + 更新的状态\n\n改进: 能更好地维持\n生成的一致性" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#0066cc;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="320" y="340" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM解码步骤3 -->
+        <mxCell id="lstm-decode3" value="生成 '你'\n\n综合考虑:\n- 已生成的'我爱'\n- 编码器中的完整信息\n- 当前的生成上下文\n\n输出: '你'\n\n改进: 相比RNN更准确\n但仍有改进空间" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#0066cc;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="540" y="340" width="200" height="140" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM改进和问题 -->
+        <mxCell id="lstm-improvements" value="LSTM的改进:\n\n✓ 门控机制: 更好地控制信息流\n✓ 长期记忆: 细胞状态能保存长期信息\n✓ 梯度问题: 缓解了梯度消失问题\n\n仍存在的问题:\n\n✗ 顺序处理: 仍然无法并行计算\n✗ 信息瓶颈: 所有信息仍需压缩到固定状态\n✗ 计算复杂: 门控机制增加了计算量\n✗ 长距离依赖: 超长序列仍然困难" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#ffc107;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="820" y="120" width="300" height="250" as="geometry" />
+        </mxCell>
+        
+        <!-- 连接箭头 -->
+        <mxCell id="lstm-arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="lstm-step1" target="lstm-step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lstm-arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="lstm-step2" target="lstm-step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lstm-arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="lstm-step3" target="lstm-decode1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lstm-arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="lstm-decode1" target="lstm-decode2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lstm-arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="lstm-decode2" target="lstm-decode3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+  <diagram name="三种架构对比总结" id="architecture-comparison">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="comparison-title" value="三种架构对比总结 - 翻译任务: I love you → 我爱你" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="327" y="20" width="1000" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- RNN总结 -->
+        <mxCell id="rnn-summary" value="RNN (循环神经网络)\n\n处理方式: I → love → you (顺序)\n\n优点:\n• 结构简单\n• 参数较少\n\n缺点:\n• 长距离依赖问题严重\n• 无法并行计算\n• 梯度消失问题\n• 训练速度慢\n\n翻译质量: ⭐⭐" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#b85450;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="250" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- LSTM总结 -->
+        <mxCell id="lstm-summary" value="LSTM (长短期记忆网络)\n\n处理方式: I → love → you (改进的顺序)\n\n优点:\n• 门控机制控制信息流\n• 缓解长距离依赖问题\n• 减轻梯度消失\n• 更好的长期记忆\n\n缺点:\n• 仍然无法并行\n• 计算复杂度高\n• 超长序列仍困难\n• 信息瓶颈依然存在\n\n翻译质量: ⭐⭐⭐" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="400" y="100" width="250" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Transformer总结 -->
+        <mxCell id="transformer-summary" value="Transformer (注意力机制)\n\n处理方式: I ↔ love ↔ you (全连接)\n\n优点:\n• 自注意力直接建立长距离依赖\n• 完全并行计算\n• 无梯度消失问题\n• 多头注意力多角度理解\n• 位置编码保持顺序信息\n\n缺点:\n• 参数量大\n• 需要更多数据\n• 计算注意力矩阵内存消耗大\n\n翻译质量: ⭐⭐⭐⭐⭐" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#0066cc;fontSize=12;align=left;" vertex="1" parent="1">
+          <mxGeometry x="700" y="100" width="250" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- 性能对比表 -->
+        <mxCell id="performance-table" value="性能对比表\n\n| 指标 | RNN | LSTM | Transformer |\n|------|-----|------|-------------|\n| 并行计算 | ✗ | ✗ | ✓ |\n| 长距离依赖 | ✗ | △ | ✓ |\n| 训练速度 | 慢 | 中等 | 快 |\n| 翻译质量 | 低 | 中等 | 高 |\n| 内存使用 | 低 | 中等 | 高 |\n| 参数量 | 少 | 中等 | 多 |" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="100" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- 具体案例对比 -->
+        <mxCell id="case-comparison" value="具体案例对比: I love you → 我爱你\n\nRNN处理过程:\n1. 看到'I' → 不知道后面是什么\n2. 看到'love' → 对'I'的记忆开始模糊\n3. 看到'you' → 'I'的信息基本丢失\n结果: 可能翻译不准确\n\nLSTM处理过程:\n1. 看到'I' → 门控机制决定保存多少信息\n2. 看到'love' → 平衡新旧信息\n3. 看到'you' → 仍有信息损失但有所改善\n结果: 翻译质量有提升\n\nTransformer处理过程:\n1. 同时看到'I love you'的完整信息\n2. 'I'直接关注'love'和'you'\n3. 每个词都能看到完整上下文\n结果: 翻译质量最佳" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f3ff;strokeColor=#0066cc;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="350" width="600" height="250" as="geometry" />
+        </mxCell>
+        
+        <!-- Transformer优势总结 -->
+        <mxCell id="transformer-advantages" value="Transformer的革命性优势\n\n🚀 并行计算:\n• RNN/LSTM: 必须等前一个词处理完\n• Transformer: 所有词同时处理\n\n🎯 直接关注:\n• RNN/LSTM: 通过隐藏状态间接传递信息\n• Transformer: 任意两个词直接建立联系\n\n🧠 多角度理解:\n• RNN/LSTM: 单一视角处理\n• Transformer: 多头注意力多角度分析\n\n📍 位置感知:\n• RNN/LSTM: 天然具有位置信息\n• Transformer: 通过位置编码显式添加\n\n这就是为什么Transformer能够:\n• 训练更快 • 翻译更准 • 理解更深" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1ecf1;strokeColor=#0c5460;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="750" y="350" width="350" height="250" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

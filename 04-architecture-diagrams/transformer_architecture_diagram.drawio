@@ -91,51 +91,51 @@
         </mxCell>
         
         <!-- 连接箭头 -->
-        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="input-section" target="input-embedding">
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="input-section" target="input-embedding">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="input-embedding" target="positional-encoding">
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;flowAnimation=1;" edge="1" parent="1" source="input-embedding" target="positional-encoding">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="positional-encoding" target="multi-head-attention">
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;flowAnimation=1;" edge="1" parent="1" source="positional-encoding" target="multi-head-attention">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="multi-head-attention" target="residual-norm-1">
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="multi-head-attention" target="residual-norm-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="multi-head-attention" target="feed-forward">
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;flowAnimation=1;" edge="1" parent="1" source="multi-head-attention" target="feed-forward">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="feed-forward" target="residual-norm-2">
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="feed-forward" target="residual-norm-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#d79b00;strokeWidth=3;" edge="1" parent="1" source="residual-norm-2" target="encoder-decoder-attention">
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#d79b00;strokeWidth=3;flowAnimation=1;" edge="1" parent="1" source="residual-norm-2" target="encoder-decoder-attention">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="decoder-input" target="masked-attention">
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;flowAnimation=1;" edge="1" parent="1" source="decoder-input" target="masked-attention">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="masked-attention" target="encoder-decoder-attention">
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;flowAnimation=1;" edge="1" parent="1" source="masked-attention" target="encoder-decoder-attention">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="encoder-decoder-attention" target="decoder-ffn">
+        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;flowAnimation=1;" edge="1" parent="1" source="encoder-decoder-attention" target="decoder-ffn">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="decoder-ffn" target="output-layer">
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;flowAnimation=1;" edge="1" parent="1" source="decoder-ffn" target="output-layer">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="arrow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="output-layer" target="final-output">
+        <mxCell id="arrow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="output-layer" target="final-output">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
@@ -205,23 +205,23 @@
         </mxCell>
         
         <!-- 连接箭头 -->
-        <mxCell id="rnn-arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="rnn-step1" target="rnn-step2">
+        <mxCell id="rnn-arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="rnn-step1" target="rnn-step2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="rnn-arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="rnn-step2" target="rnn-step3">
+        <mxCell id="rnn-arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="rnn-step2" target="rnn-step3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="rnn-arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="rnn-step3" target="rnn-decode1">
+        <mxCell id="rnn-arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;flowAnimation=1;" edge="1" parent="1" source="rnn-step3" target="rnn-decode1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="rnn-arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="rnn-decode1" target="rnn-decode2">
+        <mxCell id="rnn-arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="rnn-decode1" target="rnn-decode2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="rnn-arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="rnn-decode2" target="rnn-decode3">
+        <mxCell id="rnn-arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="rnn-decode2" target="rnn-decode3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
@@ -286,23 +286,23 @@
         </mxCell>
         
         <!-- 连接箭头 -->
-        <mxCell id="lstm-arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="lstm-step1" target="lstm-step2">
+        <mxCell id="lstm-arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="lstm-step1" target="lstm-step2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="lstm-arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="lstm-step2" target="lstm-step3">
+        <mxCell id="lstm-arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="lstm-step2" target="lstm-step3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="lstm-arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="lstm-step3" target="lstm-decode1">
+        <mxCell id="lstm-arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;flowAnimation=1;" edge="1" parent="1" source="lstm-step3" target="lstm-decode1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="lstm-arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="lstm-decode1" target="lstm-decode2">
+        <mxCell id="lstm-arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="lstm-decode1" target="lstm-decode2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="lstm-arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="lstm-decode2" target="lstm-decode3">
+        <mxCell id="lstm-arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;flowAnimation=1;" edge="1" parent="1" source="lstm-decode2" target="lstm-decode3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         

@@ -181,14 +181,14 @@
         </mxCell>
         
         <!-- 连接线 -->
-        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1">
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;flowAnimation=1;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="350" y="280" as="sourcePoint" />
             <mxPoint x="350" y="280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1">
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#666666;strokeWidth=2;flowAnimation=1;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="570" y="280" as="sourcePoint" />
             <mxPoint x="570" y="280" as="targetPoint" />
@@ -196,21 +196,21 @@
         </mxCell>
         
         <!-- 数据流箭头 -->
-        <mxCell id="data-flow1" value="词嵌入" style="endArrow=classic;html=1;rounded=0;strokeColor=#1976d2;strokeWidth=2;fontColor=#1976d2;" edge="1" parent="1">
+        <mxCell id="data-flow1" value="词嵌入" style="endArrow=classic;html=1;rounded=0;strokeColor=#1976d2;strokeWidth=2;fontColor=#1976d2;flowAnimation=1;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="350" y="290" as="sourcePoint" />
             <mxPoint x="350" y="290" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="data-flow2" value="Q,K,V计算" style="endArrow=classic;html=1;rounded=0;strokeColor=#7b1fa2;strokeWidth=2;fontColor=#7b1fa2;" edge="1" parent="1">
+        <mxCell id="data-flow2" value="Q,K,V计算" style="endArrow=classic;html=1;rounded=0;strokeColor=#7b1fa2;strokeWidth=2;fontColor=#7b1fa2;flowAnimation=1;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="570" y="290" as="sourcePoint" />
             <mxPoint x="570" y="290" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="data-flow3" value="注意力输出" style="endArrow=classic;html=1;rounded=0;strokeColor=#4caf50;strokeWidth=2;fontColor=#4caf50;" edge="1" parent="1">
+        <mxCell id="data-flow3" value="注意力输出" style="endArrow=classic;html=1;rounded=0;strokeColor=#4caf50;strokeWidth=2;fontColor=#4caf50;flowAnimation=1;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="680" y="360" as="sourcePoint" />
             <mxPoint x="680" y="360" as="targetPoint" />

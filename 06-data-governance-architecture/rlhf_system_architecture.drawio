@@ -136,126 +136,126 @@
         </mxCell>
         
         <!-- 数据流箭头 -->
-        <mxCell id="flow1" value="反馈收集" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#e74c3c;" edge="1" parent="1" source="data-experts" target="feedback-api">
+        <mxCell id="flow1" value="反馈收集" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#e74c3c;flowAnimation=1;" edge="1" parent="1" source="data-experts" target="feedback-api">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="110" y="240" as="sourcePoint" />
             <mxPoint x="110" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow2" value="反馈收集" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#e74c3c;" edge="1" parent="1" source="business-users" target="sampling-strategy">
+        <mxCell id="flow2" value="反馈收集" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#e74c3c;flowAnimation=1;" edge="1" parent="1" source="business-users" target="sampling-strategy">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="240" y="240" as="sourcePoint" />
             <mxPoint x="240" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow3" value="奖励信号" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#f39c12;" edge="1" parent="1" source="feedback-api" target="reward-function">
+        <mxCell id="flow3" value="奖励信号" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#f39c12;flowAnimation=1;" edge="1" parent="1" source="feedback-api" target="reward-function">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="170" y="300" as="sourcePoint" />
             <mxPoint x="370" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow4" value="策略优化" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#f39c12;" edge="1" parent="1" source="reward-function" target="ppo-training">
+        <mxCell id="flow4" value="策略优化" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#f39c12;flowAnimation=1;" edge="1" parent="1" source="reward-function" target="ppo-training">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="490" y="210" as="sourcePoint" />
             <mxPoint x="500" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow5" value="模型评估" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#f39c12;" edge="1" parent="1" source="ppo-training" target="model-evaluation">
+        <mxCell id="flow5" value="模型评估" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#f39c12;flowAnimation=1;" edge="1" parent="1" source="ppo-training" target="model-evaluation">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="560" y="260" as="sourcePoint" />
             <mxPoint x="430" y="280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow6" value="版本发布" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#f39c12;" edge="1" parent="1" source="model-evaluation" target="version-management">
+        <mxCell id="flow6" value="版本发布" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#f39c12;flowAnimation=1;" edge="1" parent="1" source="model-evaluation" target="version-management">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="490" y="330" as="sourcePoint" />
             <mxPoint x="500" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow7" value="在线学习" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#27ae60;" edge="1" parent="1" source="sampling-strategy" target="streaming-learning">
+        <mxCell id="flow7" value="在线学习" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#27ae60;flowAnimation=1;" edge="1" parent="1" source="sampling-strategy" target="streaming-learning">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="300" y="300" as="sourcePoint" />
             <mxPoint x="690" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow8" value="增量更新" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#27ae60;" edge="1" parent="1" source="streaming-learning" target="incremental-update">
+        <mxCell id="flow8" value="增量更新" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#27ae60;flowAnimation=1;" edge="1" parent="1" source="streaming-learning" target="incremental-update">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="810" y="210" as="sourcePoint" />
             <mxPoint x="820" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow9" value="模型服务" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#27ae60;" edge="1" parent="1" source="incremental-update" target="model-serving">
+        <mxCell id="flow9" value="模型服务" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#27ae60;flowAnimation=1;" edge="1" parent="1" source="incremental-update" target="model-serving">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="880" y="260" as="sourcePoint" />
             <mxPoint x="750" y="280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow10" value="A/B测试" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#27ae60;" edge="1" parent="1" source="model-serving" target="ab-testing">
+        <mxCell id="flow10" value="A/B测试" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#27ae60;flowAnimation=1;" edge="1" parent="1" source="model-serving" target="ab-testing">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="810" y="330" as="sourcePoint" />
             <mxPoint x="820" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow11" value="数据存储" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#3498db;" edge="1" parent="1" source="version-management" target="feedback-db">
+        <mxCell id="flow11" value="数据存储" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#3498db;flowAnimation=1;" edge="1" parent="1" source="version-management" target="feedback-db">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="620" y="330" as="sourcePoint" />
             <mxPoint x="1010" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow12" value="模型注册" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#3498db;" edge="1" parent="1" source="ab-testing" target="model-registry">
+        <mxCell id="flow12" value="模型注册" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#3498db;flowAnimation=1;" edge="1" parent="1" source="ab-testing" target="model-registry">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="940" y="330" as="sourcePoint" />
             <mxPoint x="1140" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow13" value="缓存管理" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#3498db;" edge="1" parent="1" source="model-serving" target="cache-layer">
+        <mxCell id="flow13" value="缓存管理" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#3498db;flowAnimation=1;" edge="1" parent="1" source="model-serving" target="cache-layer">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="810" y="330" as="sourcePoint" />
             <mxPoint x="1010" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow14" value="事件流" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#3498db;" edge="1" parent="1" source="streaming-learning" target="message-queue">
+        <mxCell id="flow14" value="事件流" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#3498db;flowAnimation=1;" edge="1" parent="1" source="streaming-learning" target="message-queue">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="810" y="210" as="sourcePoint" />
             <mxPoint x="1140" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow15" value="监控指标" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9b59b6;" edge="1" parent="1" source="feedback-db" target="performance-monitoring">
+        <mxCell id="flow15" value="监控指标" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#9b59b6;flowAnimation=1;" edge="1" parent="1" source="feedback-db" target="performance-monitoring">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1130" y="210" as="sourcePoint" />
             <mxPoint x="1320" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow16" value="日志收集" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9b59b6;" edge="1" parent="1" source="model-registry" target="log-analysis">
+        <mxCell id="flow16" value="日志收集" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#9b59b6;flowAnimation=1;" edge="1" parent="1" source="model-registry" target="log-analysis">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1260" y="210" as="sourcePoint" />
             <mxPoint x="1450" y="210" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow17" value="自动运维" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9b59b6;" edge="1" parent="1" source="cache-layer" target="automation">
+        <mxCell id="flow17" value="自动运维" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#9b59b6;flowAnimation=1;" edge="1" parent="1" source="cache-layer" target="automation">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1130" y="330" as="sourcePoint" />
             <mxPoint x="1320" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow18" value="安全审计" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9b59b6;" edge="1" parent="1" source="message-queue" target="security-audit">
+        <mxCell id="flow18" value="安全审计" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#9b59b6;flowAnimation=1;" edge="1" parent="1" source="message-queue" target="security-audit">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1260" y="330" as="sourcePoint" />
             <mxPoint x="1450" y="330" as="targetPoint" />

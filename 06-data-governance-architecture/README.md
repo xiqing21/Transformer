@@ -30,22 +30,41 @@
 ├── implementation_guide.md                  # 实施指南
 ├── data_sync_examples.md                   # 数据回刷示例
 │
+├── 🎯 产品故事与用户体验
+├── product_story_and_user_journey.md       # 产品故事和用户旅程
+├── transformer_optimized_architecture.md   # Transformer优化架构设计
+│
 ├── 🚀 进阶版架构文档
 ├── advanced_flink_ai_architecture.md       # Flink 2.1 + AI架构设计
 ├── rlhf_online_learning_system.md          # RLHF和在线学习系统
 ├── realtime_incremental_processing.md      # 实时增量处理架构
 │
-└── 📊 进阶版架构图
-    ├── advanced_flink_ai_architecture.drawio    # Flink AI架构图
-    ├── rlhf_system_architecture.drawio          # RLHF系统架构图
-    └── realtime_processing_flow.drawio          # 实时处理流程图
+└── 📊 架构图表（支持动画效果）
+    ├── product_business_architecture.drawio     # 产品业务架构图（动画版）
+    ├── product_business_architecture.svg        # 产品业务架构图（SVG格式）
+    ├── product_business_architecture.png        # 产品业务架构图（PNG格式）
+    ├── technical_architecture.drawio           # 技术架构图（动画版）
+    ├── technical_architecture.svg              # 技术架构图（SVG格式）
+    ├── technical_architecture.png              # 技术架构图（PNG格式）
+    ├── data_governance_architecture.drawio     # 数据治理架构图（动画版）
+    ├── data_governance_architecture.svg        # 数据治理架构图（SVG格式）
+    ├── data_governance_architecture.png        # 数据治理架构图（PNG格式）
+    ├── advanced_flink_ai_architecture.drawio    # Flink AI架构图（动画版）
+    ├── advanced_flink_ai_architecture.svg      # Flink AI架构图（SVG格式）
+    ├── advanced_flink_ai_architecture.png      # Flink AI架构图（PNG格式）
+    ├── rlhf_system_architecture.drawio          # RLHF系统架构图（动画版）
+    ├── rlhf_system_architecture.svg            # RLHF系统架构图（SVG格式）
+    ├── rlhf_system_architecture.png            # RLHF系统架构图（PNG格式）
+    ├── realtime_processing_flow.drawio          # 实时处理流程图（动画版）
+    ├── realtime_processing_flow.svg            # 实时处理流程图（SVG格式）
+    └── realtime_processing_flow.png            # 实时处理流程图（PNG格式）
 ```
 
 ## 🏗️ 架构设计
 
 ### 整体架构
 
-我们的数据治理架构借鉴了Transformer的核心设计思想：
+我们的数据治理架构借鉴了Transformer的核心设计思想，并结合Gemini的优化建议：
 
 ```
 数据源层 (Input Layer)
@@ -60,6 +79,41 @@
     ↓
 输出反馈层 (Output & Feedback Layer)
 ```
+
+### 🎯 产品故事与用户价值
+
+我们从省市县管理层及供电所的实际工作场景出发，深入了解用户痛点：
+
+#### 👥 用户角色与痛点
+- **省级管理层**：需要全省数据质量统一标准和监控
+- **市级管理层**：需要跨区域数据治理协调和效率提升
+- **县级管理层**：需要本地化数据治理和快速响应
+- **供电所人员**：需要简化数据录入和自动化验证
+
+#### 💡 AI治理解决方案价值
+- **效率提升**：数据处理效率提升15-20倍
+- **准确率改善**：数据准确率从85%提升到98%+
+- **成本节约**：人工成本降低80%，处理周期缩短90%
+- **体验优化**：从繁重手工作业转向智能化辅助决策
+
+详细的产品故事和用户旅程分析请参考：[product_story_and_user_journey.md](./product_story_and_user_journey.md)
+
+### 🧠 Transformer优化架构
+
+基于Gemini建议，我们重新设计了Transformer优化的数据治理架构：
+
+#### 四头注意力机制
+1. **规则治理头**：基于预定义规则的数据验证
+2. **交叉验证头**：多数据源交叉验证和一致性检查
+3. **模式识别头**：基于机器学习的异常模式识别
+4. **历史分析头**：基于历史数据的趋势分析和预测
+
+#### 决策融合层
+- **多维度评估**：综合四个治理头的结果
+- **智能决策**：基于置信度和风险评估的自动决策
+- **标准化输出**：统一的JSON格式治理建议
+
+详细的优化架构设计请参考：[transformer_optimized_architecture.md](./transformer_optimized_architecture.md)
 
 ### 核心组件
 
@@ -263,6 +317,50 @@ docker-compose up -d
 ### 配置说明
 
 详细的配置说明请参考 [implementation_guide.md](./implementation_guide.md)
+
+## 📊 架构图表与可视化
+
+### 🎬 动画架构图
+
+我们的架构图支持流动动画效果，更直观地展示数据流向和处理过程：<mcreference link="https://www.drawio.com/doc/faq/connector-animate" index="1">1</mcreference>
+
+#### 产品业务架构图（动画版）
+- **文件**：`product_business_architecture.drawio`
+- **特色**：展示省市县供电所四级架构的数据流动
+- **动画效果**：连接线流动动画，直观展示数据治理流程
+- **导出格式**：支持SVG格式保留动画效果
+
+#### 技术架构图（动画版）
+- **文件**：`technical_architecture.drawio`
+- **特色**：展示Transformer核心组件的数据处理流程
+- **动画效果**：多头注意力、前馈网络等组件间的数据流动
+- **技术亮点**：RLHF、在线学习、Flink 2.1 AI等先进技术
+
+#### 动画配置说明
+- **Flow Animation**：启用连接线流动动画
+- **Flow Duration**：500ms（可调节动画速度）
+- **Flow Direction**：Normal（从源到目标的流动方向）
+- **导出建议**：导出为SVG格式以保留动画效果
+
+### 📈 架构图使用指南
+
+#### 文件格式说明
+- **`.drawio`文件**：原始可编辑格式，支持动画效果，可在draw.io中打开编辑
+- **`.svg`文件**：矢量图格式，保留动画效果，适合网页展示和文档嵌入
+- **`.png`文件**：位图格式，静态图片，适合打印和演示文稿
+
+#### 使用建议
+1. **在线查看**：使用draw.io在线编辑器打开.drawio文件
+2. **动画预览**：在draw.io中可直接预览动画效果
+3. **网页展示**：使用SVG格式保留动画效果
+4. **文档嵌入**：根据需要选择SVG（动画）或PNG（静态）格式
+5. **自定义动画**：可调节动画速度、方向和样式
+
+#### 动画效果特性
+- **流动动画**：所有连接线都配置了流动动画效果
+- **动画参数**：`flowAnimation=1`, `strokeWidth=3`, 统一的流动方向
+- **颜色主题**：使用专业的蓝色主题（#1f4e79, #1976d2等）
+- **兼容性**：SVG格式在现代浏览器中完美支持动画效果
 
 ## 📊 监控运维
 

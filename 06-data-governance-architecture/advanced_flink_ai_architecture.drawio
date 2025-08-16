@@ -126,84 +126,84 @@
         </mxCell>
         
         <!-- 数据流箭头 -->
-        <mxCell id="flow1" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="marketing-db" target="ai-model-ddl">
+        <mxCell id="flow1" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="marketing-db" target="ai-model-ddl">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="220" y="200" as="sourcePoint" />
             <mxPoint x="270" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow2" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="external-sources" target="ptf">
+        <mxCell id="flow2" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="external-sources" target="ptf">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="220" y="300" as="sourcePoint" />
             <mxPoint x="270" y="250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow3" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="message-queue" target="variant-type">
+        <mxCell id="flow3" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="message-queue" target="variant-type">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="220" y="400" as="sourcePoint" />
             <mxPoint x="270" y="350" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow4" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="ml-predict" target="openai-integration">
+        <mxCell id="flow4" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="ml-predict" target="openai-integration">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="680" y="200" as="sourcePoint" />
             <mxPoint x="730" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow5" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="delta-join" target="ml-models">
+        <mxCell id="flow5" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="delta-join" target="ml-models">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="680" y="300" as="sourcePoint" />
             <mxPoint x="730" y="250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow6" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="state-management" target="knowledge-graph">
+        <mxCell id="flow6" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="state-management" target="knowledge-graph">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="680" y="400" as="sourcePoint" />
             <mxPoint x="730" y="350" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow7" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="openai-integration" target="postgresql">
+        <mxCell id="flow7" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="openai-integration" target="postgresql">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="890" y="200" as="sourcePoint" />
             <mxPoint x="940" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow8" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="ml-models" target="redis">
+        <mxCell id="flow8" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="ml-models" target="redis">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="890" y="300" as="sourcePoint" />
             <mxPoint x="940" y="250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow9" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="knowledge-graph" target="object-storage">
+        <mxCell id="flow9" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="knowledge-graph" target="object-storage">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="890" y="400" as="sourcePoint" />
             <mxPoint x="940" y="350" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow10" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="postgresql" target="governance-app">
+        <mxCell id="flow10" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="postgresql" target="governance-app">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1150" y="200" as="sourcePoint" />
             <mxPoint x="1200" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow11" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="redis" target="monitoring">
+        <mxCell id="flow11" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="redis" target="monitoring">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1150" y="300" as="sourcePoint" />
             <mxPoint x="1200" y="250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="flow12" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="object-storage" target="api-gateway">
+        <mxCell id="flow12" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="object-storage" target="api-gateway">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1150" y="400" as="sourcePoint" />
             <mxPoint x="1200" y="350" as="targetPoint" />

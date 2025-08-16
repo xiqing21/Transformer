@@ -149,60 +149,60 @@
         </mxCell>
         
         <!-- 数据流箭头 -->
-        <mxCell id="flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="oracle-db" target="data-center">
+        <mxCell id="flow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="oracle-db" target="data-center">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="data-center" target="postgres-dw">
+        <mxCell id="flow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#1f4e79;flowAnimation=1;" edge="1" parent="1" source="data-center" target="postgres-dw">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="postgres-dw" target="task-scheduler">
+        <mxCell id="flow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#1976d2;flowAnimation=1;" edge="1" parent="1" source="postgres-dw" target="task-scheduler">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7b1fa2;" edge="1" parent="1" source="task-scheduler" target="address-head">
+        <mxCell id="flow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#7b1fa2;flowAnimation=1;" edge="1" parent="1" source="task-scheduler" target="address-head">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4caf50;" edge="1" parent="1" source="address-head" target="region-a">
+        <mxCell id="flow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#4caf50;flowAnimation=1;" edge="1" parent="1" source="address-head" target="region-a">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="region-a" target="feature-extraction">
+        <mxCell id="flow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#f57c00;flowAnimation=1;" edge="1" parent="1" source="region-a" target="feature-extraction">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="feature-extraction" target="quality-scoring">
+        <mxCell id="flow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#f57c00;flowAnimation=1;" edge="1" parent="1" source="feature-extraction" target="quality-scoring">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="quality-scoring" target="risk-classification">
+        <mxCell id="flow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#f57c00;flowAnimation=1;" edge="1" parent="1" source="quality-scoring" target="risk-classification">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="risk-classification" target="suggestion-generation">
+        <mxCell id="flow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#f57c00;flowAnimation=1;" edge="1" parent="1" source="risk-classification" target="suggestion-generation">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#e91e63;" edge="1" parent="1" source="suggestion-generation" target="human-review">
+        <mxCell id="flow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#e91e63;flowAnimation=1;" edge="1" parent="1" source="suggestion-generation" target="human-review">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#e91e63;" edge="1" parent="1" source="human-review" target="staging-db">
+        <mxCell id="flow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#e91e63;flowAnimation=1;" edge="1" parent="1" source="human-review" target="staging-db">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#e91e63;" edge="1" parent="1" source="staging-db" target="batch-update">
+        <mxCell id="flow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#e91e63;flowAnimation=1;" edge="1" parent="1" source="staging-db" target="batch-update">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="flow13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#e91e63;" edge="1" parent="1" source="batch-update" target="oracle-update">
+        <mxCell id="flow13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#e91e63;flowAnimation=1;" edge="1" parent="1" source="batch-update" target="oracle-update">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
         <!-- 反馈回路 -->
-        <mxCell id="feedback-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ff5722;strokeDashArray=5 5;" edge="1" parent="1" source="human-review" target="feedback-processor">
+        <mxCell id="feedback-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#ff5722;strokeDashArray=5 5;flowAnimation=1;" edge="1" parent="1" source="human-review" target="feedback-processor">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="220" y="1260" />

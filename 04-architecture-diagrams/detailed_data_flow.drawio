@@ -51,17 +51,17 @@
         </mxCell>
         
         <!-- Q矩阵 -->
-        <mxCell id="q-matrix" value="🔍 Q矩阵 (Query)\n\nI_q: [2.1, 1.8, 2.3, ...]\nlove_q: [1.5, 2.7, 1.9, ...]\nAI_q: [0.8, 1.2, 2.5, ...]\n\n表达每个词的\"查询需求\"" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#f44336;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="q-matrix" value="🔍 Q矩阵 (Query)\n\nI_q: [2.1, 1.8, 2.3, ...]\nlove_q: [1.5, 2.7, 1.9, ...]\nAI_q: [0.8, 1.2, 2.5, ...]\n\n表达每个词的&quot;查询需求&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#f44336;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="330" y="480" width="180" height="120" as="geometry" />
         </mxCell>
         
         <!-- K矩阵 -->
-        <mxCell id="k-matrix" value="🔑 K矩阵 (Key)\n\nI_k: [1.5, 2.0, 1.2, ...]\nlove_k: [2.3, 1.1, 2.8, ...]\nAI_k: [1.7, 2.5, 1.4, ...]\n\n表达每个词能\"提供的信息\"" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="k-matrix" value="🔑 K矩阵 (Key)\n\nI_k: [1.5, 2.0, 1.2, ...]\nlove_k: [2.3, 1.1, 2.8, ...]\nAI_k: [1.7, 2.5, 1.4, ...]\n\n表达每个词能&quot;提供的信息&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="540" y="480" width="180" height="120" as="geometry" />
         </mxCell>
         
         <!-- V矩阵 -->
-        <mxCell id="v-matrix" value="💎 V矩阵 (Value)\n\nI_v: [0.8, 1.5, 2.1, ...]\nlove_v: [1.9, 0.6, 1.3, ...]\nAI_v: [2.2, 1.8, 0.9, ...]\n\n包含词的\"实际语义内容\"" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#2196f3;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="v-matrix" value="💎 V矩阵 (Value)\n\nI_v: [0.8, 1.5, 2.1, ...]\nlove_v: [1.9, 0.6, 1.3, ...]\nAI_v: [2.2, 1.8, 0.9, ...]\n\n包含词的&quot;实际语义内容&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#2196f3;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="750" y="480" width="180" height="120" as="geometry" />
         </mxCell>
         
@@ -71,7 +71,7 @@
         </mxCell>
         
         <!-- 注意力权重可视化 -->
-        <mxCell id="attention-weights" value="📊 \"love\"的注意力权重\n\nlove → I: 0.2 (20%)\nlove → love: 0.3 (30%)\nlove → AI: 0.5 (50%)\n\n\"love\"最关注\"AI\",\n体现了动宾关系" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="attention-weights" value="📊 &quot;love&quot;的注意力权重\n\nlove → I: 0.2 (20%)\nlove → love: 0.3 (30%)\nlove → AI: 0.5 (50%)\n\n&quot;love&quot;最关注&quot;AI&quot;,\n体现了动宾关系" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="50" y="650" width="200" height="120" as="geometry" />
         </mxCell>
         

@@ -36,7 +36,7 @@
         </mxCell>
         
         <!-- 残差连接和层归一化 -->
-        <mxCell id="residual-norm" value="🔄 残差连接 & 层归一化\n• 残差连接: output = F(x) + x\n• 层归一化: LayerNorm(x + Sublayer(x))\n• 解决梯度消失问题\n• 加速训练收敛\n• 稳定训练过程" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="residual-norm" value="🔄 残差连接 &amp; 层归一化\n• 残差连接: output = F(x) + x\n• 层归一化: LayerNorm(x + Sublayer(x))\n• 解决梯度消失问题\n• 加速训练收敛\n• 稳定训练过程" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ff8f00;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="50" y="370" width="280" height="120" as="geometry" />
         </mxCell>
         

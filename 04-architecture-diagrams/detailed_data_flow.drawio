@@ -6,7 +6,7 @@
         <mxCell id="1" parent="0" />
         
         <!-- 标题 -->
-        <mxCell id="title" value="Transformer处理\"I love AI\"的完整数据流" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1f4e79;" vertex="1" parent="1">
+        <mxCell id="title" value="Transformer处理&quot;I love AI&quot;的完整数据流" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1f4e79;" vertex="1" parent="1">
           <mxGeometry x="527" y="20" width="600" height="40" as="geometry" />
         </mxCell>
         
@@ -16,12 +16,12 @@
         </mxCell>
         
         <!-- 原始输入 -->
-        <mxCell id="raw-input" value="📄 原始输入\n\"I love AI\"" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=12;align=center;" vertex="1" parent="1">
+        <mxCell id="raw-input" value="📄 原始输入\n&quot;I love AI&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=12;align=center;" vertex="1" parent="1">
           <mxGeometry x="50" y="200" width="120" height="80" as="geometry" />
         </mxCell>
         
         <!-- 分词 -->
-        <mxCell id="tokenization" value="🔤 分词\n[\"I\", \"love\", \"AI\"]\n\n词汇表映射:\nI → 1234\nlove → 5678\nAI → 9012" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=12;align=left;" vertex="1" parent="1">
+        <mxCell id="tokenization" value="🔤 分词\n[&quot;I&quot;, &quot;love&quot;, &quot;AI&quot;]\n\n词汇表映射:\nI → 1234\nlove → 5678\nAI → 9012" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=12;align=left;" vertex="1" parent="1">
           <mxGeometry x="200" y="200" width="150" height="120" as="geometry" />
         </mxCell>
         

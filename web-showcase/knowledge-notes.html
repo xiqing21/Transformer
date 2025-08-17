@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识笔记 - Transformer学习笔记集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 0.3rem 0.5rem;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .note-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .note-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .note-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .note-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .note-card .features {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .note-card .features li {
+            padding: 0.3rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .note-card .features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .concept-item {
+            background: rgba(102, 126, 234, 0.05);
+            border-left: 4px solid #667eea;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .concept-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid #e17055;
+        }
+
+        .highlight-box h4 {
+            color: #d63031;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .notes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🧠 Transformer学习中心</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="beginner-guides.html">入门指南</a></li>
+                <li><a href="deep-analysis.html">深度分析</a></li>
+                <li><a href="advanced-research.html">前沿研究</a></li>
+                <li><a href="architecture-diagrams.html">架构图解</a></li>
+                <li><a href="design-principles.html">设计原则</a></li>
+                <li><a href="data-governance-architecture.html">数据治理</a></li>
+                <li><a href="knowledge-notes.html" style="color: #667eea; font-weight: bold;">知识笔记</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>📚 笔记导航</h3>
+            <ul>
+                <li><a href="#transformer-summary">Transformer核心知识</a></li>
+                <li><a href="#architecture-overview">架构概述</a></li>
+                <li><a href="#attention-mechanism">注意力机制</a></li>
+                <li><a href="#core-components">核心组件</a></li>
+                <li><a href="#mptt-examples">MPTT详细示例</a></li>
+                <li><a href="#translation-examples">翻译实例</a></li>
+                <li><a href="#numerical-computation">数值计算</a></li>
+                <li><a href="#translation-brain">翻译脑分析</a></li>
+                <li><a href="#cognitive-process">认知过程</a></li>
+                <li><a href="#model-innovations">模型创新</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="hero">
+                <h1>🧠 Transformer知识笔记集</h1>
+                <p>深入理解Transformer架构的核心概念、创新机制与实际应用</p>
+            </div>
+
+            <div class="notes-grid">
+                <div class="note-card">
+                    <h3>📖 Transformer核心知识点</h3>
+                    <p>精炼总结Transformer架构的核心概念，从基础架构到关键创新点的全面概述。</p>
+                    <ul class="features">
+                        <li>编码器-解码器架构详解</li>
+                        <li>注意力机制深度分析</li>
+                        <li>核心组件工作原理</li>
+                        <li>与RNN/LSTM对比分析</li>
+                    </ul>
+                    <a href="./docs/08-knowledge-notes/transformer_summary.md" class="btn">查看详细笔记</a>
+                </div>
+
+                <div class="note-card">
+                    <h3>🔄 MPTT多路径翻译架构</h3>
+                    <p>详细解析多路径翻译Transformer的工作机制，通过具体示例展示三通道并行处理。</p>
+                    <ul class="features">
+                        <li>语义、语法、习语三通道分析</li>
+                        <li>动态融合机制详解</li>
+                        <li>具体翻译示例演示</li>
+                        <li>数值计算过程展示</li>
+                    </ul>
+                    <a href="./docs/08-knowledge-notes/mptt_detailed_examples.md" class="btn">查看详细示例</a>
+                </div>
+
+                <div class="note-card">
+                    <h3>🧠 翻译脑概念分析</h3>
+                    <p>深度解析"翻译脑"概念，探讨Transformer如何模拟人类翻译的认知过程。</p>
+                    <ul class="features">
+                        <li>人类翻译认知过程分析</li>
+                        <li>Transformer架构对应关系</li>
+                        <li>优缺点深度分析</li>
+                        <li>新型模型技术展望</li>
+                    </ul>
+                    <a href="./docs/08-knowledge-notes/translation_brain_analysis.md" class="btn">查看深度分析</a>
+                </div>
+            </div>
+
+            <section id="transformer-summary" class="section">
+                <h2>📖 Transformer核心知识点总结</h2>
+                
+                <div id="architecture-overview" class="concept-grid">
+                    <div class="concept-item">
+                        <h4>🏗️ 编码器-解码器架构</h4>
+                        <p><strong>编码器</strong>：理解和消化输入文本，转换为富含上下文信息的向量表示</p>
+                        <p><strong>解码器</strong>：利用编码器输出和已生成文本，逐词生成目标序列</p>
+                    </div>
+                    <div class="concept-item">
+                        <h4>📝 输入处理流程</h4>
+                        <p><strong>词嵌入</strong>：将词转换为固定维度向量</p>
+                        <p><strong>位置编码</strong>：添加位置信息区分词序</p>
+                        <p><strong>最终输入</strong> = 词嵌入 + 位置编码</p>
+                    </div>
+                </div>
+
+                <div id="attention-mechanism">
+                    <h3>🎯 注意力机制详解</h3>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h4>自注意力机制 (Self-Attention)</h4>
+                            <p><strong>Q (Query)</strong>：当前词，用于查询其他词</p>
+                            <p><strong>K (Key)</strong>：所有词，用于与Q匹配</p>
+                            <p><strong>V (Value)</strong>：所有词的实际内容</p>
+                            <div class="code-example">
+Attention(Q,K,V) = softmax(QK^T/√d_k)V
+                            </div>
+                        </div>
+                        <div class="concept-item">
+                            <h4>多头注意力 (Multi-Head Attention)</h4>
+                            <p>将Q,K,V投影到多个子空间，并行计算多次注意力</p>
+                            <p><strong>优势</strong>：多角度理解、并行计算、表达能力更强</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="core-components">
+                    <h3>⚙️ 核心组件分析</h3>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h4>前馈神经网络 (FFN)</h4>
+                            <p>结构：Linear → ReLU → Linear</p>
+                            <p>作用：非线性变换、信息加工、扩展-压缩维度</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>残差连接与层归一化</h4>
+                            <p><strong>残差连接</strong>：Output = Layer(Input) + Input</p>
+                            <p><strong>层归一化</strong>：稳定训练过程，加速收敛</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🔍 Transformer vs RNN/LSTM 对比</h4>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>特性</th>
+                                <th>Transformer</th>
+                                <th>RNN/LSTM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>计算方式</td>
+                                <td><strong>并行计算</strong></td>
+                                <td>顺序计算（串行）</td>
+                            </tr>
+                            <tr>
+                                <td>长距离依赖</td>
+                                <td><strong>优秀</strong>（直接连接）</td>
+                                <td>困难（信息逐级传递）</td>
+                            </tr>
+                            <tr>
+                                <td>训练速度</td>
+                                <td><strong>快</strong></td>
+                                <td>慢</td>
+                            </tr>
+                            <tr>
+                                <td>核心机制</td>
+                                <td>自注意力机制</td>
+                                <td>循环和门控机制</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="mptt-examples" class="section">
+                <h2>🔄 MPTT多路径翻译架构示例</h2>
+                
+                <div class="concept-grid">
+                    <div class="concept-item">
+                        <h4>🎯 三通道并行处理</h4>
+                        <p><strong>语义通道</strong>：理解句子核心含义</p>
+                        <p><strong>语法通道</strong>：处理语法结构和规则</p>
+                        <p><strong>词汇/习语通道</strong>：处理特殊表达和文化特色</p>
+                    </div>
+                </div>
+
+                <div id="translation-examples">
+                    <h3>📝 翻译实例分析</h3>
+                    <div class="highlight-box">
+                        <h4>示例："Break a leg in your performance tonight!"</h4>
+                        <div class="code-example">
+# 语义通道分析
+语义提取：[祝愿, 表演, 成功, 鼓励]
+语义向量：[0.8祝福, 0.9表演, 0.7鼓励, 0.1物理动作]
+
+# 语法通道分析  
+语法结构：[动词短语] + [介词短语] + [时间状语]
+中文对应：在[时间] + [动作/状态] + [祝愿语气]
+
+# 习语通道分析
+习语识别："Break a leg" → 习语检测得分: 0.95
+中文对应：加油、祝你成功、表演顺利
+
+# 最终输出
+今晚演出加油！祝你成功！
+                        </div>
+                    </div>
+                </div>
+
+                <div id="numerical-computation">
+                    <h3>🔢 数值计算示例</h3>
+                    <div class="code-example">
+# 动态权重计算（基于习语检测分数）
+idiom_score = 0.95  # "Break a leg"习语检测得分
+weights = {
+    "semantic": 0.3 + 0.1 * (1 - idiom_score),    # 0.305
+    "grammar": 0.3 + 0.1 * (1 - idiom_score),     # 0.305  
+    "idiom": 0.4 + 0.2 * idiom_score              # 0.59
+}
+
+# 融合计算
+final_output[token] = [
+    weights["semantic"] * semantic_output[token][i] +
+    weights["grammar"] * grammar_output[token][i] +
+    weights["idiom"] * idiom_output[token][i]
+    for i in range(3)
+]
+                    </div>
+                </div>
+            </section>
+
+            <section id="translation-brain" class="section">
+                <h2>🧠 "翻译脑"概念深度分析</h2>
+                
+                <div id="cognitive-process">
+                    <h3>🔄 人类翻译认知过程</h3>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h4>双阶段认知模式</h4>
+                            <p><strong>Stage 1</strong>：源语言 → 语义向量（抽象意义表示）</p>
+                            <p><strong>Stage 2</strong>：语义向量 → 目标语言</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>Transformer对应关系</h4>
+                            <p><strong>编码器</strong>：模拟人脑的"理解"过程</p>
+                            <p><strong>解码器</strong>：模拟人脑的"表达"过程</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🎯 翻译脑工作流程</h4>
+                    <div class="code-example">
+原始输入 → 理解阶段 → 表达阶段 → 输出结果
+English   →  意义提取  →  中文重构  →  Chinese
+
+具体过程：
+1. 输入理解：解析源语言的语法结构和词汇含义
+2. 语义抽象：转化为抽象的"意义表示"（语言无关）
+3. 目标重构：用目标语言的语法和表达习惯重新组织
+4. 输出生成：产生最终的目标语言表达
+                    </div>
+                </div>
+
+                <div id="model-innovations">
+                    <h3>🚀 新型模型技术展望</h3>
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <h4>非自回归翻译模型</h4>
+                            <p>一次性生成整个目标句子，显著提升推理速度</p>
+                            <p>代表：GLAT、Mask-Predict模型</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>多模态翻译模型</h4>
+                            <p>结合视觉信息辅助翻译，提升消歧能力</p>
+                            <p>代表：M2M-100、mBART、XLM-R</p>
+                        </div>
+                        <div class="concept-item">
+                            <h4>基于检索的翻译</h4>
+                            <p>维护翻译记忆库，检索相似例子指导翻译</p>
+                            <p>优势：处理领域特定翻译，提升一致性</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(102, 126, 234, 0.1); border-radius: 15px;">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">📚 完整文档链接</h3>
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="./docs/08-knowledge-notes/transformer_summary.md" class="btn">Transformer核心知识点</a>
+                    <a href="./docs/08-knowledge-notes/mptt_detailed_examples.md" class="btn">MPTT详细示例</a>
+                    <a href="./docs/08-knowledge-notes/translation_brain_analysis.md" class="btn">翻译脑分析</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

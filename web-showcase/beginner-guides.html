@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformer 初学者指南 | 学习展示中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .doc-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .doc-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .doc-description {
+            color: #718096;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-highlights {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-highlights h4 {
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .doc-highlights li {
+            padding: 0.25rem 0;
+            color: #718096;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .doc-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+        }
+
+        .read-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .read-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .learning-path {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .learning-path h2 {
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .learning-path h2::before {
+            content: '🎯';
+            margin-right: 0.5rem;
+        }
+
+        .path-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .step-card {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .key-concepts {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .key-concepts h2 {
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .key-concepts h2::before {
+            content: '🧠';
+            margin-right: 0.5rem;
+        }
+
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .concept-card {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .concept-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-description {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">🤖 Transformer 学习中心</a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="beginner-guides.html">初学者指南</a>
+                <a href="deep-analysis.html">深度分析</a>
+                <a href="architecture-diagrams.html">架构图谱</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>📚 Transformer 初学者指南</h1>
+            <p>从零开始，用最简单的语言理解 Transformer 架构的核心概念和工作原理</p>
+        </div>
+
+        <div class="learning-path">
+            <h2>学习路径</h2>
+            <div class="path-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-title">基础概念</div>
+                    <div class="step-description">了解什么是 Transformer，为什么它如此重要</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-title">架构理解</div>
+                    <div class="step-description">掌握编码器-解码器结构和注意力机制</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-title">实际应用</div>
+                    <div class="step-description">通过翻译任务理解 Transformer 的工作流程</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-title">深入细节</div>
+                    <div class="step-description">探索前馈网络、残差连接等核心组件</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="document-card">
+                <div class="doc-header">
+                    <div class="doc-icon">📖</div>
+                    <div class="doc-title">Transformer 完全指南</div>
+                </div>
+                <div class="doc-description">
+                    这是一份专为初学者设计的完整指南，使用生活化的比喻和直观的解释，帮助你理解 Transformer 的核心概念。
+                </div>
+                <div class="doc-highlights">
+                    <h4>主要内容</h4>
+                    <ul>
+                        <li>用翻译官比喻理解 Transformer</li>
+                        <li>编码器-解码器架构详解</li>
+                        <li>多头自注意力机制原理</li>
+                        <li>前馈神经网络工作流程</li>
+                        <li>残差连接和层归一化</li>
+                    </ul>
+                </div>
+                <a href="./docs/01-beginner-guides/transformer_beginner_guide.md" class="read-button" target="_blank">阅读文档</a>
+            </div>
+
+            <div class="document-card">
+                <div class="doc-header">
+                    <div class="doc-icon">🔍</div>
+                    <div class="doc-title">详细解释与实例</div>
+                </div>
+                <div class="doc-description">
+                    通过具体的翻译任务示例，深入了解 Transformer 的数据处理流程和训练过程。
+                </div>
+                <div class="doc-highlights">
+                    <h4>主要内容</h4>
+                    <ul>
+                        <li>具体翻译任务示例分析</li>
+                        <li>数据预处理详细步骤</li>
+                        <li>词嵌入和位置编码</li>
+                        <li>训练过程完整流程</li>
+                        <li>与传统模型的对比</li>
+                    </ul>
+                </div>
+                <a href="./docs/01-beginner-guides/transformer_detailed_explanation.md" class="read-button" target="_blank">阅读文档</a>
+            </div>
+        </div>
+
+        <div class="key-concepts">
+            <h2>核心概念速览</h2>
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <div class="concept-title">🎯 注意力机制</div>
+                    <div class="concept-description">
+                        让模型能够关注输入序列中的重要部分，就像人类阅读时会重点关注关键词汇一样。
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">🏗️ 编码器-解码器</div>
+                    <div class="concept-description">
+                        编码器理解输入内容，解码器生成输出结果，两者协同工作完成复杂的语言任务。
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">⚡ 并行处理</div>
+                    <div class="concept-description">
+                        不同于传统的逐词处理，Transformer 可以同时处理整个序列，大大提高了效率。
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">🔄 残差连接</div>
+                    <div class="concept-description">
+                        帮助信息在深层网络中更好地传递，避免梯度消失问题，提高训练稳定性。
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">📍 位置编码</div>
+                    <div class="concept-description">
+                        为每个词添加位置信息，让模型理解词汇在句子中的顺序关系。
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">🧮 前馈网络</div>
+                    <div class="concept-description">
+                        对注意力机制的输出进行进一步处理和变换，增强模型的表达能力。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.document-card, .step-card, .concept-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

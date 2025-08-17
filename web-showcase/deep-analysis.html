@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformer 深度分析 | 学习展示中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .overview-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .overview-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .overview-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .overview-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .overview-desc {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #e2e8f0;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .key-concepts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .concept-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .concept-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .concept-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .concept-title::before {
+            content: '🔹';
+            margin-right: 0.5rem;
+        }
+
+        .concept-desc {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        .calculation-example {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid #dee2e6;
+        }
+
+        .example-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .example-title::before {
+            content: '🧮';
+            margin-right: 0.5rem;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .math-formula {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .step-by-step {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        .read-document {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin: 2rem auto;
+            display: block;
+            width: fit-content;
+        }
+
+        .read-document:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .read-document::before {
+            content: '📖';
+            margin-right: 0.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid #667eea;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .key-concepts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">🤖 Transformer 学习中心</a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="beginner-guides.html">初学者指南</a>
+                <a href="deep-analysis.html">深度分析</a>
+                <a href="architecture-diagrams.html">架构图谱</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>🔬 Transformer 深度分析</h1>
+            <p>通过详细的数值计算和数学推导，深入理解 Transformer 的每一个技术细节</p>
+        </div>
+
+        <div class="overview-section">
+            <h2 style="text-align: center; margin-bottom: 1rem;">📊 深度分析概览</h2>
+            <p style="text-align: center; opacity: 0.9;">本文档通过具体的数值计算示例，解答 Transformer 架构中的核心技术问题</p>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <div class="overview-icon">🎯</div>
+                    <div class="overview-title">注意力机制</div>
+                    <div class="overview-desc">详解 Q、K、V 矩阵的计算过程和物理意义</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">🧮</div>
+                    <div class="overview-title">数值计算</div>
+                    <div class="overview-desc">用具体数字展示每一步的计算过程</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">🔍</div>
+                    <div class="overview-title">多头注意力</div>
+                    <div class="overview-desc">深入理解多头机制的拆分和融合</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">⚡</div>
+                    <div class="overview-title">前馈网络</div>
+                    <div class="overview-desc">解析扩展-压缩的工作原理</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div class="section-title">核心问题解析</div>
+            </div>
+            
+            <div class="key-concepts">
+                <div class="concept-card">
+                    <div class="concept-title">注意力权重计算</div>
+                    <div class="concept-desc">词与词之间如何计算相关权重？通过 Q·K^T 的点积运算，量化词汇间的语义关联度</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">多头注意力机制</div>
+                    <div class="concept-desc">如何拆分成不同关注点？每个头关注不同的语义维度，如语法、语义、位置关系等</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">前馈网络原理</div>
+                    <div class="concept-desc">扩展和压缩过程是什么？先扩展到高维空间进行复杂变换，再压缩回原始维度</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">解码器机制</div>
+                    <div class="concept-desc">详细工作机制如何？结合自注意力和交叉注意力，实现序列到序列的转换</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">训练vs推理</div>
+                    <div class="concept-desc">两个阶段的区别？训练时并行处理，推理时自回归生成，策略完全不同</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-title">Q、K、V设计</div>
+                    <div class="concept-desc">为什么要分三个矩阵？分离查询、键值、内容三种角色，实现灵活的注意力模式</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="section-header">
+                <div class="section-icon">🧮</div>
+                <div class="section-title">计算示例："I love AI"</div>
+            </div>
+            
+            <div class="calculation-example">
+                <div class="example-title">步骤化数值计算</div>
+                <div class="step-by-step">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">词嵌入向量化</div>
+                            <div class="step-desc">将文本转换为数值向量表示</div>
+                            <div class="code-block">"I"   → [1.0, 0.5, 0.2]<br>"love" → [0.3, 1.2, 0.8]<br>"AI"   → [0.7, 0.1, 1.5]</div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">生成 Q、K、V 矩阵</div>
+                            <div class="step-desc">通过学习得到的权重矩阵计算查询、键、值向量</div>
+                            <div class="math-formula">Q = X × W_q, K = X × W_k, V = X × W_v</div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">计算注意力分数</div>
+                            <div class="step-desc">通过点积计算词汇间的关联强度</div>
+                            <div class="math-formula">Attention(Q,K,V) = softmax(QK^T/√d_k)V</div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-title">应用 Softmax 归一化</div>
+                            <div class="step-desc">将注意力分数转换为概率分布</div>
+                            <div class="step-desc">确保所有注意力权重之和为 1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="section-header">
+                <div class="section-icon">🏗️</div>
+                <div class="section-title">Q、K、V 设计的深层原理</div>
+            </div>
+            
+            <div class="calculation-example">
+                <div class="example-title">图书馆查询系统比喻</div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-title">Q (Query - 查询)</div>
+                        <div class="feature-desc">就像你在图书馆的需求描述："我想找关于人工智能的书籍"。每个词都会生成一个查询向量，表达它需要什么信息。</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏷️</div>
+                        <div class="feature-title">K (Key - 索引键)</div>
+                        <div class="feature-desc">就像每本书的标签关键词："深度学习、神经网络、AI应用"。每个词都会生成一个键向量，标记它能提供什么信息。</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <div class="feature-title">V (Value - 实际内容)</div>
+                        <div class="feature-desc">就像书籍的真实内容。每个词都会生成一个值向量，包含它的核心语义信息。</div>
+                    </div>
+                </div>
+                
+                <div style="background: #e8f4fd; padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                    <h4 style="color: #1e40af; margin-bottom: 1rem;">💡 核心洞察</h4>
+                    <p style="color: #1e40af;">Q、K、V 的分离让模型学会了"如何提问"、"如何标记"、"如何提取"的智慧，这是 Transformer 能够理解复杂语言结构的关键所在！</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="section-header">
+                <div class="section-icon">📖</div>
+                <div class="section-title">完整技术文档</div>
+            </div>
+            
+            <p style="color: #718096; margin-bottom: 2rem; font-size: 1.1rem;">想要了解更多详细的数值计算过程、多头注意力的具体实现、前馈网络的数学原理，以及训练与推理阶段的详细对比？</p>
+            
+            <div style="text-align: center;">
+                <a href="./docs/02-deep-analysis/transformer_deep_analysis.md" class="read-document" target="_blank">
+                    阅读完整深度分析文档
+                </a>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+                <h4 style="color: #2d3748; margin-bottom: 1rem;">📋 文档包含内容</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="display: flex; align-items: center;"><span style="color: #48bb78; margin-right: 0.5rem;">✓</span> 详细的数值计算示例</div>
+                    <div style="display: flex; align-items: center;"><span style="color: #48bb78; margin-right: 0.5rem;">✓</span> 多头注意力机制解析</div>
+                    <div style="display: flex; align-items: center;"><span style="color: #48bb78; margin-right: 0.5rem;">✓</span> 前馈网络工作原理</div>
+                    <div style="display: flex; align-items: center;"><span style="color: #48bb78; margin-right: 0.5rem;">✓</span> 解码器详细机制</div>
+                    <div style="display: flex; align-items: center;"><span style="color: #48bb78; margin-right: 0.5rem;">✓</span> 训练vs推理对比</div>
+                    <div style="display: flex; align-items: center;"><span style="color: #48bb78; margin-right: 0.5rem;">✓</span> 权重矩阵训练过程</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.content-section, .overview-section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    section.style.transition = 'all 0.8s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

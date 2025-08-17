@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformer 学习展示中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .module-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .module-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .module-description {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Transformer 学习展示中心</h1>
+            <p>深入探索 Transformer 架构的完整学习之旅</p>
+        </div>
+
+        <div class="modules-grid">
+            <div class="module-card" onclick="window.location.href='beginner-guides.html'">
+                <div class="module-icon">📚</div>
+                <div class="module-title">初学者指南</div>
+                <div class="module-description">
+                    从零开始学习 Transformer 架构，包含基础概念、详细解释和入门教程。
+                </div>
+                <div class="module-stats">
+                    <span>📄 2 个文档</span>
+                    <span>⏱️ 30 分钟阅读</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='deep-analysis.html'">
+                <div class="module-icon">🔬</div>
+                <div class="module-title">深度分析</div>
+                <div class="module-description">
+                    深入剖析 Transformer 的内部机制，包含数学原理和实现细节。
+                </div>
+                <div class="module-stats">
+                    <span>📄 1 个文档</span>
+                    <span>⏱️ 45 分钟阅读</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='advanced-research.html'">
+                <div class="module-icon">🚀</div>
+                <div class="module-title">前沿研究</div>
+                <div class="module-description">
+                    探索 AI 的局限性与突破，了解最新的研究进展和未来方向。
+                </div>
+                <div class="module-stats">
+                    <span>📄 1 个文档</span>
+                    <span>⏱️ 25 分钟阅读</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='architecture-diagrams.html'">
+                <div class="module-icon">🏗️</div>
+                <div class="module-title">架构图谱</div>
+                <div class="module-description">
+                    可视化的架构图表，包含详细的数据流图和交互式架构展示。
+                </div>
+                <div class="module-stats">
+                    <span>🖼️ 12+ 图表</span>
+                    <span>📊 SVG 动画</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='design-principles.html'">
+                <div class="module-icon">⚙️</div>
+                <div class="module-title">设计原则</div>
+                <div class="module-description">
+                    架构设计的核心理念和最佳实践，指导实际项目开发。
+                </div>
+                <div class="module-stats">
+                    <span>📄 1 个文档</span>
+                    <span>⏱️ 20 分钟阅读</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='data-governance.html'">
+                <div class="module-icon">🏛️</div>
+                <div class="module-title">数据治理架构</div>
+                <div class="module-description">
+                    基于 Transformer 思想的数据治理系统，包含实时处理和 RLHF 系统。
+                </div>
+                <div class="module-stats">
+                    <span>📄 8 个文档</span>
+                    <span>🖼️ 6 个架构图</span>
+                </div>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='knowledge-notes.html'">
+                <div class="module-icon">📝</div>
+                <div class="module-title">知识笔记</div>
+                <div class="module-description">
+                    精心整理的学习笔记，包含翻译大脑概念和 MPTT 架构创新。
+                </div>
+                <div class="module-stats">
+                    <span>📄 3 个笔记</span>
+                    <span>💡 创新理论</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Transformer 学习展示中心 | 持续更新中...</p>
+        </div>
+    </div>
+
+    <script>
+        // 添加页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.module-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

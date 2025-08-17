@@ -1,0 +1,382 @@
+<mxfile host="app.diagrams.net" modified="2024-01-15T10:30:00.000Z" agent="5.0" etag="xxx" version="22.1.16" type="device">
+  <diagram name="技术架构" id="technical-arch">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="title" value="Transformer优化数据治理技术架构" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="527" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 接入层 -->
+        <mxCell id="access-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="1554" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="access-title" value="接入层 (Input Layer)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="70" y="110" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 接入层组件 -->
+        <mxCell id="web-portal" value="Web门户" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="250" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="mobile-app" value="移动端APP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="370" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="api-gateway" value="API网关" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="490" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="data-collector" value="数据采集器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="610" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="batch-import" value="批量导入" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="730" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- Transformer核心层 -->
+        <mxCell id="transformer-core" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="50" y="230" width="1554" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="transformer-title" value="Transformer数据治理核心层" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#f57c00;" vertex="1" parent="1">
+          <mxGeometry x="700" y="240" width="300" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 输入嵌入层 -->
+        <mxCell id="input-embedding" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="embedding-title" value="输入嵌入层 (Input Embedding)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="180" y="285" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="data-preprocessor" value="数据预处理器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="310" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="feature-extractor" value="特征提取器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="190" y="310" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tokenizer" value="数据标记器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="280" y="310" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 位置编码 -->
+        <mxCell id="positional-encoding" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="400" y="280" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pos-title" value="位置编码 (Positional Encoding)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#2e7d32;" vertex="1" parent="1">
+          <mxGeometry x="450" y="285" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="task-scheduler" value="任务调度器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;" vertex="1" parent="1">
+          <mxGeometry x="420" y="310" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="priority-manager" value="优先级管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;" vertex="1" parent="1">
+          <mxGeometry x="510" y="310" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 多头注意力机制 -->
+        <mxCell id="multi-head-attention" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#f57f17;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="520" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mha-title" value="多头注意力机制 (Multi-Head Attention)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#f57f17;" vertex="1" parent="1">
+          <mxGeometry x="250" y="390" width="250" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- 四个治理头 -->
+        <mxCell id="rule-head" value="规则治理头\n(Rule-Based)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffecb3;strokeColor=#f57f17;" vertex="1" parent="1">
+          <mxGeometry x="100" y="420" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cross-head" value="交叉验证头\n(Cross-Reference)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffecb3;strokeColor=#f57f17;" vertex="1" parent="1">
+          <mxGeometry x="220" y="420" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pattern-head" value="模式识别头\n(Pattern Recognition)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffecb3;strokeColor=#f57f17;" vertex="1" parent="1">
+          <mxGeometry x="340" y="420" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="history-head" value="历史分析头\n(Historical Analysis)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffecb3;strokeColor=#f57f17;" vertex="1" parent="1">
+          <mxGeometry x="460" y="420" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 前馈网络 -->
+        <mxCell id="feed-forward" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="620" y="380" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ff-title" value="前馈网络 (Feed Forward)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="670" y="390" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="decision-fusion" value="决策融合层" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="640" y="420" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="result-generator" value="结果生成器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="730" y="420" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="confidence-calc" value="置信度计算" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="640" y="460" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="action-recommender" value="行动推荐器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="730" y="460" width="80" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 残差连接和层归一化 -->
+        <mxCell id="residual-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f2f1;strokeColor=#00695c;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="840" y="380" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="residual-title" value="残差连接 &amp; 层归一化" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="870" y="390" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="residual-conn" value="残差连接" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="860" y="420" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="layer-norm" value="层归一化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="950" y="420" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="data-trace" value="数据溯源" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="860" y="460" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="quality-control" value="质量控制" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="950" y="460" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 高级AI组件 -->
+        <mxCell id="advanced-ai" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#8e24aa;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="280" width="520" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-title" value="高级AI组件" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#8e24aa;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="290" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- RLHF -->
+        <mxCell id="rlhf-system" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#8e24aa;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="320" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="rlhf-title" value="RLHF强化学习" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#8e24aa;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="325" width="100" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="reward-model" value="奖励模型" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="345" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="policy-optimizer" value="策略优化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="345" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="feedback-loop" value="反馈循环" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="345" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="human-feedback" value="人工反馈" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1125" y="375" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="model-update" value="模型更新" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="375" width="60" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- 在线学习 -->
+        <mxCell id="online-learning" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#8e24aa;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="320" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ol-title" value="在线学习系统" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#8e24aa;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="325" width="100" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="stream-learning" value="流式学习" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="345" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="incremental-update" value="增量更新" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="345" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="adaptive-learning" value="自适应学习" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="345" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="concept-drift" value="概念漂移" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1385" y="375" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="model-ensemble" value="模型集成" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1455" y="375" width="60" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Flink 2.1 AI -->
+        <mxCell id="flink-ai" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#8e24aa;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="410" width="480" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="flink-title" value="Flink 2.1 AI实时处理引擎" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#8e24aa;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="415" width="150" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="ml-predict" value="ML_PREDICT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="435" width="70" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ptf" value="PTF函数" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="435" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="delta-join" value="Delta Join" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="435" width="70" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="variant-type" value="VARIANT类型" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="435" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ai-model-ddl" value="AI模型DDL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="435" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="incremental-proc" value="增量处理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="435" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="real-time-ai" value="实时AI推理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1185" y="465" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="stream-ml" value="流式机器学习" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1275" y="465" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="auto-scaling" value="自动扩缩容" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#8e24aa;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1375" y="465" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- 服务层 -->
+        <mxCell id="service-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="660" width="1554" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="service-title" value="服务层 (Service Layer)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="70" y="670" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 服务组件 -->
+        <mxCell id="governance-service" value="治理服务" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc02;strokeColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="250" y="690" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="rule-service" value="规则服务" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc02;strokeColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="370" y="690" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="task-service" value="任务服务" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc02;strokeColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="490" y="690" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="notification-service" value="通知服务" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc02;strokeColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="610" y="690" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="report-service" value="报告服务" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc02;strokeColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="730" y="690" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-service" value="认证服务" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc02;strokeColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="850" y="690" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- 数据层 -->
+        <mxCell id="data-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f2f1;strokeColor=#00695c;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="790" width="1554" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="data-title" value="数据层 (Data Layer)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="70" y="800" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 数据组件 -->
+        <mxCell id="oracle-db" value="Oracle\n业务数据库" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="250" y="820" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="postgres-db" value="PostgreSQL\n治理数据库" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="370" y="820" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="redis-cache" value="Redis\n缓存层" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="490" y="820" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="es-search" value="ElasticSearch\n搜索引擎" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="610" y="820" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka-stream" value="Kafka\n消息队列" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="730" y="820" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hdfs-storage" value="HDFS\n大数据存储" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="850" y="820" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="minio-object" value="MinIO\n对象存储" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#00695c;" vertex="1" parent="1">
+          <mxGeometry x="970" y="820" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- 连接线 -->
+        <!-- 接入层到Transformer -->
+        <mxCell id="access-to-transformer" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#1976d2;strokeWidth=2;flowAnimation=1;" edge="1" parent="1" source="api-gateway" target="input-embedding">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="200" as="sourcePoint" />
+            <mxPoint x="230" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 嵌入层到多头注意力 -->
+        <mxCell id="embedding-to-mha" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#7b1fa2;strokeWidth=2;flowAnimation=1;" edge="1" parent="1" source="input-embedding" target="multi-head-attention">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="370" as="sourcePoint" />
+            <mxPoint x="340" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 位置编码到多头注意力 -->
+        <mxCell id="pos-to-mha" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#2e7d32;strokeWidth=2;flowAnimation=1;" edge="1" parent="1" source="positional-encoding" target="multi-head-attention">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="370" as="sourcePoint" />
+            <mxPoint x="400" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 多头注意力到前馈网络 -->
+        <mxCell id="mha-to-ff" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#f57f17;strokeWidth=2;flowAnimation=1;" edge="1" parent="1" source="multi-head-attention" target="feed-forward">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="440" as="sourcePoint" />
+            <mxPoint x="620" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 前馈网络到残差连接 -->
+        <mxCell id="ff-to-residual" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#c2185b;strokeWidth=2;flowAnimation=1;" edge="1" parent="1" source="feed-forward" target="residual-layer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="440" as="sourcePoint" />
+            <mxPoint x="840" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- AI组件连接 -->
+        <mxCell id="transformer-to-ai" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#8e24aa;strokeWidth=2;flowAnimation=1;" edge="1" parent="1" source="residual-layer" target="advanced-ai">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1040" y="440" as="sourcePoint" />
+            <mxPoint x="1060" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Transformer到服务层 -->
+        <mxCell id="transformer-to-service" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#f57c00;strokeWidth=2;flowAnimation=1;" edge="1" parent="1" source="transformer-core" target="service-layer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="827" y="630" as="sourcePoint" />
+            <mxPoint x="827" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 服务层到数据层 -->
+        <mxCell id="service-to-data" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#ef6c00;strokeWidth=2;flowAnimation=1;" edge="1" parent="1" source="service-layer" target="data-layer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="827" y="760" as="sourcePoint" />
+            <mxPoint x="827" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 性能指标 -->
+        <mxCell id="performance" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#6c757d;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="920" width="1554" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="perf-title" value="系统性能指标" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#495057;" vertex="1" parent="1">
+          <mxGeometry x="700" y="930" width="150" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="throughput" value="处理吞吐量\n10万条/秒" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="150" y="955" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="latency" value="响应延迟\n&lt;100ms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="270" y="955" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="accuracy" value="治理准确率\n>95%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="390" y="955" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="availability" value="系统可用性\n99.9%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="510" y="955" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="scalability" value="水平扩展\n支持" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="630" y="955" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="cost-reduction" value="成本降低\n60%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#28a745;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="750" y="955" width="100" height="35" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

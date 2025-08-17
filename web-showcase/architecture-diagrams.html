@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformer 架构图谱 | 学习展示中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: white;
+            color: #667eea;
+            border-color: white;
+        }
+
+        .diagrams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .diagram-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .diagram-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .diagram-image {
+            width: 100%;
+            height: 300px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .diagram-image svg {
+            max-width: 100%;
+            max-height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .diagram-image:hover svg {
+            transform: scale(1.05);
+        }
+
+        .diagram-content {
+            padding: 1.5rem;
+        }
+
+        .diagram-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .diagram-description {
+            color: #718096;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .diagram-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tag.core {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .tag.advanced {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+
+        .tag.comparison {
+            background: #feebc8;
+            color: #c05621;
+        }
+
+        .tag.research {
+            background: #e9d8fd;
+            color: #6b46c1;
+        }
+
+        .diagram-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .view-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-btn {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 1px solid #e2e8f0;
+        }
+
+        .download-btn:hover {
+            background: #edf2f7;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 1rem 1.5rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #718096;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+        }
+
+        .modal-image svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .stat-item p {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .diagrams-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .filter-tabs {
+                gap: 0.5rem;
+            }
+            
+            .filter-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">🤖 Transformer 学习中心</a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="beginner-guides.html">初学者指南</a>
+                <a href="deep-analysis.html">深度分析</a>
+                <a href="architecture-diagrams.html">架构图谱</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ Transformer 架构图谱</h1>
+            <p>通过精美的架构图深入理解 Transformer 的设计原理和工作机制</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>精美架构图</p>
+                </div>
+                <div class="stat-item">
+                    <h3>SVG</h3>
+                    <p>矢量格式</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4</h3>
+                    <p>主要类别</p>
+                </div>
+                <div class="stat-item">
+                    <h3>高清</h3>
+                    <p>可缩放显示</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-tabs">
+            <div class="filter-tab active" data-filter="all">🌟 全部图表</div>
+            <div class="filter-tab" data-filter="core">🎯 核心架构</div>
+            <div class="filter-tab" data-filter="comparison">⚖️ 架构对比</div>
+            <div class="filter-tab" data-filter="advanced">🚀 高级概念</div>
+            <div class="filter-tab" data-filter="research">🔬 前沿研究</div>
+        </div>
+
+        <div class="diagrams-grid" id="diagramsGrid">
+            <!-- Transformer 详细架构图 -->
+            <div class="diagram-card" data-category="core">
+                <div class="diagram-image">
+                    <object data="./images/Transformer详细架构图.svg" type="image/svg+xml" width="100%" height="100%">
+                        <img src="./images/Transformer详细架构图.png" alt="Transformer详细架构图" style="max-width: 100%; max-height: 100%;">
+                    </object>
+                </div>
+                <div class="diagram-content">
+                    <div class="diagram-title">Transformer 详细架构图</div>
+                    <div class="diagram-description">完整展示 Transformer 的编码器-解码器架构，包括多头注意力、前馈网络等核心组件</div>
+                    <div class="diagram-tags">
+                        <span class="tag core">核心架构</span>
+                        <span class="tag">编码器</span>
+                        <span class="tag">解码器</span>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="action-btn view-btn" onclick="openModal('Transformer详细架构图', './images/Transformer详细架构图.svg')">🔍 查看大图</button>
+                        <a href="./images/Transformer详细架构图.svg" download class="action-btn download-btn">⬇️ 下载</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transformer 数据流详解 -->
+            <div class="diagram-card" data-category="core">
+                <div class="diagram-image">
+                    <object data="./images/Transformer数据流详解.svg" type="image/svg+xml" width="100%" height="100%">
+                        <img src="./images/Transformer数据流详解.png" alt="Transformer数据流详解" style="max-width: 100%; max-height: 100%;">
+                    </object>
+                </div>
+                <div class="diagram-content">
+                    <div class="diagram-title">Transformer 数据流详解</div>
+                    <div class="diagram-description">详细展示数据在 Transformer 中的流动过程，包括注意力计算和信息传递</div>
+                    <div class="diagram-tags">
+                        <span class="tag core">数据流</span>
+                        <span class="tag">注意力</span>
+                        <span class="tag">信息传递</span>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="action-btn view-btn" onclick="openModal('Transformer数据流详解', './images/Transformer数据流详解.svg')">🔍 查看大图</button>
+                        <a href="./images/Transformer数据流详解.svg" download class="action-btn download-btn">⬇️ 下载</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transformer 深度解析架构图 -->
+            <div class="diagram-card" data-category="advanced">
+                <div class="diagram-image">
+                    <object data="./images/Transformer深度解析架构图.svg" type="image/svg+xml" width="100%" height="100%">
+                        <img src="./images/Transformer深度解析架构图.png" alt="Transformer深度解析架构图" style="max-width: 100%; max-height: 100%;">
+                    </object>
+                </div>
+                <div class="diagram-content">
+                    <div class="diagram-title">Transformer 深度解析架构图</div>
+                    <div class="diagram-description">深入分析 Transformer 的内部机制，展示各组件间的复杂交互关系</div>
+                    <div class="diagram-tags">
+                        <span class="tag advanced">深度解析</span>
+                        <span class="tag">内部机制</span>
+                        <span class="tag">组件交互</span>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="action-btn view-btn" onclick="openModal('Transformer深度解析架构图', './images/Transformer深度解析架构图.svg')">🔍 查看大图</button>
+                        <a href="./images/Transformer深度解析架构图.svg" download class="action-btn download-btn">⬇️ 下载</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RNN 架构对比 -->
+            <div class="diagram-card" data-category="comparison">
+                <div class="diagram-image">
+                    <object data="./images/RNN架构对比.svg" type="image/svg+xml" width="100%" height="100%">
+                        <img src="./images/RNN架构对比.png" alt="RNN架构对比" style="max-width: 100%; max-height: 100%;">
+                    </object>
+                </div>
+                <div class="diagram-content">
+                    <div class="diagram-title">RNN 架构对比</div>
+                    <div class="diagram-description">对比 RNN 和 Transformer 的架构差异，突出 Transformer 的优势</div>
+                    <div class="diagram-tags">
+                        <span class="tag comparison">架构对比</span>
+                        <span class="tag">RNN</span>
+                        <span class="tag">优势分析</span>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="action-btn view-btn" onclick="openModal('RNN架构对比', './images/RNN架构对比.svg')">🔍 查看大图</button>
+                        <a href="./images/RNN架构对比.svg" download class="action-btn download-btn">⬇️ 下载</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LSTM 架构对比 -->
+            <div class="diagram-card" data-category="comparison">
+                <div class="diagram-image">
+                    <object data="./images/LSTM架构对比.svg" type="image/svg+xml" width="100%" height="100%">
+                        <img src="./images/LSTM架构对比.png" alt="LSTM架构对比" style="max-width: 100%; max-height: 100%;">
+                    </object>
+                </div>
+                <div class="diagram-content">
+                    <div class="diagram-title">LSTM 架构对比</div>
+                    <div class="diagram-description">详细对比 LSTM 和 Transformer 的结构特点和性能差异</div>
+                    <div class="diagram-tags">
+                        <span class="tag comparison">架构对比</span>
+                        <span class="tag">LSTM</span>
+                        <span class="tag">性能分析</span>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="action-btn view-btn" onclick="openModal('LSTM架构对比', './images/LSTM架构对比.svg')">🔍 查看大图</button>
+                        <a href="./images/LSTM架构对比.svg" download class="action-btn download-btn">⬇️ 下载</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 三种架构对比总结 -->
+            <div class="diagram-card" data-category="comparison">
+                <div class="diagram-image">
+                    <object data="./images/三种架构对比总结.svg" type="image/svg+xml" width="100%" height="100%">
+                        <img src="./images/三种架构对比总结.png" alt="三种架构对比总结" style="max-width: 100%; max-height: 100%;">
+                    </object>
+                </div>
+                <div class="diagram-content">
+                    <div class="diagram-title">三种架构对比总结</div>
+                    <div class="diagram-description">全面对比 RNN、LSTM 和 Transformer 三种架构的特点和适用场景</div>
+                    <div class="diagram-tags">
+                        <span class="tag comparison">综合对比</span>
+                        <span class="tag">总结分析</span>
+                        <span class="tag">适用场景</span>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="action-btn view-btn" onclick="openModal('三种架构对比总结', './images/三种架构对比总结.svg')">🔍 查看大图</button>
+                        <a href="./images/三种架构对比总结.svg" download class="action-btn download-btn">⬇️ 下载</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MPTT 多路径翻译架构 -->
+            <div class="diagram-card" data-category="research">
+                <div class="diagram-image">
+                    <object data="./images/MPTT多路径翻译架构.svg" type="image/svg+xml" width="100%" height="100%">
+                        <img src="./images/MPTT多路径翻译架构.png" alt="MPTT多路径翻译架构" style="max-width: 100%; max-height: 100%;">
+                    </object>
+                </div>
+                <div class="diagram-content">
+                    <div class="diagram-title">MPTT 多路径翻译架构</div>
+                    <div class="diagram-description">创新的多路径翻译 Transformer 架构，支持语义、语法、习语三通道并行处理</div>
+                    <div class="diagram-tags">
+                        <span class="tag research">前沿研究</span>
+                        <span class="tag">多路径</span>
+                        <span class="tag">翻译优化</span>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="action-btn view-btn" onclick="openModal('MPTT多路径翻译架构', './images/MPTT多路径翻译架构.svg')">🔍 查看大图</button>
+                        <a href="./images/MPTT多路径翻译架构.svg" download class="action-btn download-btn">⬇️ 下载</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI 智能系统综合架构 -->
+            <div class="diagram-card" data-category="advanced">
+                <div class="diagram-image">
+                    <object data="./images/AI智能系统综合架构.svg" type="image/svg+xml" width="100%" height="100%">
+                        <img src="./images/AI智能系统综合架构.png" alt="AI智能系统综合架构" style="max-width: 100%; max-height: 100%;">
+                    </object>
+                </div>
+                <div class="diagram-content">
+                    <div class="diagram-title">AI 智能系统综合架构</div>
+                    <div class="diagram-description">展示完整的 AI 智能系统架构，包括 Transformer 在整体系统中的位置和作用</div>
+                    <div class="diagram-tags">
+                        <span class="tag advanced">系统架构</span>
+                        <span class="tag">综合设计</span>
+                        <span class="tag">AI系统</span>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="action-btn view-btn" onclick="openModal('AI智能系统综合架构', './images/AI智能系统综合架构.svg')">🔍 查看大图</button>
+                        <a href="./images/AI智能系统综合架构.svg" download class="action-btn download-btn">⬇️ 下载</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Limitations and Breakthroughs -->
+            <div class="diagram-card" data-category="research">
+                <div class="diagram-image">
+                    <object data="./images/AI Limitations and Breakthroughs.svg" type="image/svg+xml" width="100%" height="100%">
+                        <img src="./images/AI Limitations and Breakthroughs.png" alt="AI Limitations and Breakthroughs" style="max-width: 100%; max-height: 100%;">
+                    </object>
+                </div>
+                <div class="diagram-content">
+                    <div class="diagram-title">AI 局限性与突破</div>
+                    <div class="diagram-description">分析当前 AI 技术的局限性和未来可能的突破方向</div>
+                    <div class="diagram-tags">
+                        <span class="tag research">前沿研究</span>
+                        <span class="tag">局限分析</span>
+                        <span class="tag">未来展望</span>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="action-btn view-btn" onclick="openModal('AI局限性与突破', './images/AI Limitations and Breakthroughs.svg')">🔍 查看大图</button>
+                        <a href="./images/AI Limitations and Breakthroughs.svg" download class="action-btn download-btn">⬇️ 下载</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态框 -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">架构图详览</div>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-image" id="modalImage">
+                <!-- 图片将在这里动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 过滤功能
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const diagramCards = document.querySelectorAll('.diagram-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 更新活跃标签
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const filter = tab.dataset.filter;
+                
+                // 过滤卡片
+                diagramCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // 模态框功能
+        function openModal(title, imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalTitle.textContent = title;
+            modalImage.innerHTML = `<object data="${imageSrc}" type="image/svg+xml" width="100%" height="100%"></object>`;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击模态框背景关闭
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target.id === 'imageModal') {
+                closeModal();
+            }
+        });
+
+        // ESC 键关闭模态框
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.diagram-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

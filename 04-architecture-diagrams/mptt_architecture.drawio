@@ -1,0 +1,297 @@
+<mxfile host="app.diagrams.net" modified="2024-01-20T10:00:00.000Z" agent="5.0" etag="mptt123" version="22.1.16">
+  <diagram name="MPTT多路径翻译架构" id="mptt-architecture">
+    <mxGraphModel dx="2074" dy="1396" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1280" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="title" value="Multi-Path Translation Transformer (MPTT) 架构图" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#1f4e79;" vertex="1" parent="1">
+          <mxGeometry x="660" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 输入层 -->
+        <mxCell id="input-section" value="🔤 输入层 (Input Layer)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=3;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="1720" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- 原始输入 -->
+        <mxCell id="raw-input" value="📝 原始输入\n&quot;Break a leg in your performance tonight!&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontSize=14;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="180" width="300" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 分词和嵌入 -->
+        <mxCell id="tokenization" value="🔤 分词 &amp; 词嵌入\n[&quot;Break&quot;, &quot;a&quot;, &quot;leg&quot;, &quot;in&quot;, &quot;your&quot;, &quot;performance&quot;, &quot;tonight&quot;]\n↓\n512维词向量 + 位置编码" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="500" y="180" width="400" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 输入表示 -->
+        <mxCell id="input-repr" value="🎯 输入表示\n每个词的上下文向量\n[X₁, X₂, X₃, X₄, X₅, X₆, X₇]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=14;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="950" y="180" width="250" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 多路径编码器标题 -->
+        <mxCell id="multipath-title" value="🧠 多路径编码器 (Multi-Path Encoder)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;strokeWidth=3;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="320" width="1720" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 语义通道 -->
+        <mxCell id="semantic-path" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#4caf50;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="150" y="420" width="480" height="600" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="semantic-title" value="🌟 语义通道 (Semantic Path)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#4caf50;" vertex="1" parent="1">
+          <mxGeometry x="170" y="440" width="440" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="semantic-attention" value="🔍 语义自注意力\n\n关注词汇的核心含义：\n• &quot;Break&quot; ↔ &quot;performance&quot;: 0.6\n• &quot;leg&quot; ↔ &quot;performance&quot;: 0.5\n• &quot;tonight&quot; ↔ &quot;performance&quot;: 0.4\n\n学习语义关联模式" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="170" y="480" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="semantic-ffn" value="⚙️ 语义FFN\n\n提取深层语义特征：\n• 情感分析\n• 意图识别\n• 概念抽象\n• 语义消歧" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#4caf50;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="390" y="480" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="semantic-output" value="📊 语义输出\n\n向量表示:\n• Break: [0.8祝愿, 0.1动作, 0.1字面]\n• leg: [0.7祝愿, 0.1身体, 0.2其他]\n• performance: [0.9表演, 0.8积极, 0.1其他]\n\n语义理解: 这是表演祝福语" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#4caf50;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="170" y="620" width="420" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="semantic-layers" value="🏗️ 语义层堆叠\n\nLayer 1: 基础语义\nLayer 2: 概念抽象\nLayer 3: 意图理解\nLayer 4: 情感分析\nLayer 5: 语境整合\nLayer 6: 高级语义" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#4caf50;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="170" y="740" width="420" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 语法通道 -->
+        <mxCell id="grammar-path" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="660" y="420" width="480" height="600" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grammar-title" value="📝 语法通道 (Grammar Path)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#f57c00;" vertex="1" parent="1">
+          <mxGeometry x="680" y="440" width="440" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grammar-attention" value="📐 语法自注意力\n\n关注语法结构：\n• &quot;Break&quot; ↔ &quot;a&quot;: 0.4\n• &quot;a&quot; ↔ &quot;leg&quot;: 0.8\n• &quot;in&quot; ↔ &quot;your&quot;: 0.4\n• &quot;your&quot; ↔ &quot;performance&quot;: 0.6\n\n学习语法依赖关系" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#f57c00;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="480" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grammar-ffn" value="⚙️ 语法FFN\n\n语法模式识别：\n• 词性标注\n• 句法分析\n• 语法规则\n• 结构对齐" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc02;strokeColor=#f57c00;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="480" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grammar-output" value="📊 语法输出\n\n结构分析:\n• Break a leg: 动词短语(习语)\n• in your performance: 介词短语\n• tonight: 时间状语\n\n语法映射: 英语 → 中文语序调整" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb74d;strokeColor=#f57c00;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="620" width="420" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grammar-layers" value="🏗️ 语法层堆叠\n\nLayer 1: 词性识别\nLayer 2: 短语结构\nLayer 3: 句法分析\nLayer 4: 语法规则\nLayer 5: 结构对齐\nLayer 6: 语序调整" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#f57c00;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="680" y="740" width="420" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 词汇/习语通道 -->
+        <mxCell id="idiom-path" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="420" width="480" height="600" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="idiom-title" value="🎭 词汇/习语通道 (Idiom Path)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#7b1fa2;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="440" width="440" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="idiom-attention" value="🎪 习语自注意力\n\n习语模式识别：\n• &quot;Break&quot; ↔ &quot;a&quot;: 0.45\n• &quot;a&quot; ↔ &quot;leg&quot;: 0.5\n• &quot;leg&quot; ↔ &quot;Break&quot;: 0.5\n\n习语检测得分: 0.95" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#7b1fa2;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="480" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="idiom-ffn" value="⚙️ 习语FFN\n\n习语处理：\n• 习语识别\n• 文化映射\n• 对等表达\n• 本地化适应" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="480" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="idiom-output" value="📊 习语输出\n\n习语映射:\n• &quot;Break a leg&quot; → 戏剧祝福语\n• 英文习语 → 中文对应表达\n• 文化背景: 戏剧界传统\n• 中文表达: &quot;加油&quot;、&quot;祝成功&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#7b1fa2;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="620" width="420" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="idiom-layers" value="🏗️ 习语层堆叠\n\nLayer 1: 词汇识别\nLayer 2: 习语检测\nLayer 3: 文化分析\nLayer 4: 对等映射\nLayer 5: 本地化\nLayer 6: 表达优化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#7b1fa2;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="740" width="420" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 动态融合层 -->
+        <mxCell id="fusion-section" value="🔀 动态融合层 (Dynamic Fusion Layer)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#e91e63;strokeWidth=3;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1080" width="1720" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 权重计算 -->
+        <mxCell id="weight-calculation" value="⚖️ 权重计算模块\n\n基于上下文动态调整:\n\n🎯 习语检测分数: 0.95\n📐 语法复杂度: 0.3\n🌟 语义模糊度: 0.2\n\n动态权重分配:\n• 语义通道: 0.305\n• 语法通道: 0.305\n• 习语通道: 0.59" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd9;strokeColor=#e91e63;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1160" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- 融合计算 -->
+        <mxCell id="fusion-calc" value="🧮 融合计算\n\n加权求和:\nFinal = w₁×Semantic + w₂×Grammar + w₃×Idiom\n\n对于 &quot;Break a leg&quot;:\n[0.775, 0.293, 0.062]\n↓\n强烈的祝愿含义\n习语特征占主导" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#e91e63;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1160" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- 注意力融合 -->
+        <mxCell id="attention-fusion" value="🎯 注意力融合\n\n三通道注意力权重合并:\n\n• 语义注意力 × 0.305\n• 语法注意力 × 0.305\n• 习语注意力 × 0.59\n\n生成统一的表示向量\n保留各通道的特色信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f06292;strokeColor=#e91e63;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="1160" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- 融合输出 -->
+        <mxCell id="fusion-output" value="📤 融合输出\n\n综合表示向量:\n• 保留语义核心\n• 遵循语法规则\n• 突出习语特征\n• 平衡三种信息\n\n输出维度: 512\n包含丰富的多层次信息" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ec407a;strokeColor=#e91e63;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="1160" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- 目标语言自适应解码器 -->
+        <mxCell id="decoder-section" value="🎪 目标语言自适应解码器 (Target-Adaptive Decoder)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=3;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1420" width="1720" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 文化适应 -->
+        <mxCell id="cultural-adapter" value="🌏 文化适应模块\n\n文化语境转换:\n• 英语戏剧传统 → 中文祝福习惯\n• &quot;Break a leg&quot; → &quot;加油&quot;\n• 保持祝福本意\n• 适应中文表达\n\n文化特色:\n• 语气词选择\n• 表达方式调整\n• 情感色彩保持" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1500" width="300" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 语法适应 -->
+        <mxCell id="grammar-adapter" value="📐 语法适应模块\n\n中文语法调整:\n• 时间状语前置: &quot;tonight&quot; → &quot;今晚&quot;\n• 语序调整: SVO → 时间+动作+祝愿\n• 语气助词添加\n• 句式自然化\n\n语法规则:\n• 中文语序习惯\n• 语气词使用\n• 句子结构优化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81d4fa;strokeColor=#0277bd;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1500" width="300" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 生成策略 -->
+        <mxCell id="generation-strategy" value="🎯 生成策略模块\n\n智能生成:\n• 自回归生成\n• 动态调整策略\n• 多候选排序\n• 质量评估\n\n优化策略:\n• Beam Search\n• 长度惩罚\n• 重复惩罚\n• 流畅度评分" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4fc3f7;strokeColor=#0277bd;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="1500" width="300" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 最终输出 -->
+        <mxCell id="final-output" value="🎉 最终输出\n\n中文翻译结果:\n&quot;今晚演出加油！祝你成功！&quot;\n\n特点:\n✅ 保留祝福语义\n✅ 符合中文习惯\n✅ 自然流畅表达\n✅ 文化背景适应\n✅ 情感色彩丰富" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#29b6f6;strokeColor=#0277bd;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="1500" width="300" height="180" as="geometry" />
+        </mxCell>
+        
+        <!-- 架构优势 -->
+        <mxCell id="advantages" value="🚀 MPTT架构优势总结" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ffa000;strokeWidth=2;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1720" width="1720" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="advantage-list" value="✨ 关键优势:\n\n🎯 多角度理解: 同时从语义、语法、习语三个维度分析输入\n🔄 动态融合: 根据内容特点智能调整各通道权重\n🌍 文化适应: 针对目标语言的文化背景进行适应性调整\n📊 信息保留: 避免传统单通道编码的信息压缩损失\n🎭 习语处理: 专门处理习语、俗语等文化特色表达\n⚡ 并行计算: 三个通道可以并行处理，提高效率\n🔧 灵活架构: 可根据语言对特点调整各通道参数" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ffa000;fontSize=14;align=left;verticalAlign=top;spacingLeft=20;spacingTop=15;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1780" width="1520" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 连接箭头，带有流动动画效果 -->
+        
+        <!-- 输入层箭头 -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#4caf50;flowAnimation=1;shadow=1;" edge="1" parent="1" source="raw-input" target="tokenization">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#2196f3;flowAnimation=1;shadow=1;" edge="1" parent="1" source="tokenization" target="input-repr">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 分发到三个通道的箭头 -->
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;strokeColor=#4caf50;flowAnimation=1;shadow=1;" edge="1" parent="1" source="input-repr" target="semantic-path">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow4" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;strokeColor=#f57c00;flowAnimation=1;shadow=1;" edge="1" parent="1" source="input-repr" target="grammar-path">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;strokeColor=#7b1fa2;flowAnimation=1;shadow=1;" edge="1" parent="1" source="input-repr" target="idiom-path">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 三个通道内部的流动箭头 -->
+        <mxCell id="semantic-flow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#4caf50;flowAnimation=1;" edge="1" parent="1" source="semantic-attention" target="semantic-ffn">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="semantic-flow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#4caf50;flowAnimation=1;" edge="1" parent="1" source="semantic-ffn" target="semantic-output">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grammar-flow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#f57c00;flowAnimation=1;" edge="1" parent="1" source="grammar-attention" target="grammar-ffn">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="grammar-flow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#f57c00;flowAnimation=1;" edge="1" parent="1" source="grammar-ffn" target="grammar-output">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="idiom-flow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7b1fa2;flowAnimation=1;" edge="1" parent="1" source="idiom-attention" target="idiom-ffn">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="idiom-flow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7b1fa2;flowAnimation=1;" edge="1" parent="1" source="idiom-ffn" target="idiom-output">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 三个通道到融合层的箭头 -->
+        <mxCell id="arrow6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;strokeColor=#4caf50;flowAnimation=1;shadow=1;" edge="1" parent="1" source="semantic-path" target="weight-calculation">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;strokeColor=#f57c00;flowAnimation=1;shadow=1;" edge="1" parent="1" source="grammar-path" target="fusion-calc">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;strokeColor=#7b1fa2;flowAnimation=1;shadow=1;" edge="1" parent="1" source="idiom-path" target="attention-fusion">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 融合层内部流动 -->
+        <mxCell id="fusion-flow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#e91e63;flowAnimation=1;" edge="1" parent="1" source="weight-calculation" target="fusion-calc">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fusion-flow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#e91e63;flowAnimation=1;" edge="1" parent="1" source="fusion-calc" target="attention-fusion">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fusion-flow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#e91e63;flowAnimation=1;" edge="1" parent="1" source="attention-fusion" target="fusion-output">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 融合层到解码器 -->
+        <mxCell id="arrow9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeWidth=4;strokeColor=#0277bd;flowAnimation=1;shadow=1;" edge="1" parent="1" source="fusion-output" target="cultural-adapter">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 解码器内部流动 -->
+        <mxCell id="decoder-flow1" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#0277bd;flowAnimation=1;" edge="1" parent="1" source="cultural-adapter" target="grammar-adapter">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="decoder-flow2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#0277bd;flowAnimation=1;" edge="1" parent="1" source="grammar-adapter" target="generation-strategy">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="decoder-flow3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#0277bd;flowAnimation=1;" edge="1" parent="1" source="generation-strategy" target="final-output">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 标注箭头 -->
+        <mxCell id="label1" value="分词嵌入" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#4caf50;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="190" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label2" value="位置编码" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#2196f3;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="190" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label3" value="语义分析" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#4caf50;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="330" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label4" value="语法分析" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#f57c00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="330" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label5" value="习语识别" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#7b1fa2;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="330" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label6" value="动态融合" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#e91e63;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1050" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label7" value="文化适应" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#0277bd;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1390" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

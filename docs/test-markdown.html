@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试 Markdown 渲染</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .test-link:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Markdown 渲染测试页面</h1>
+    <p>点击下面的链接测试 markdown-viewer.html 是否正常工作：</p>
+    
+    <a href="./markdown-viewer.html?doc=./docs/01-beginner-guides/transformer_beginner_guide.md" class="test-link" target="_blank">
+        测试初学者指南
+    </a>
+    
+    <a href="./markdown-viewer.html?doc=./docs/06-data-governance-architecture/README.md" class="test-link" target="_blank">
+        测试数据治理架构
+    </a>
+    
+    <p>如果链接正常工作，应该能看到渲染后的 Markdown 内容。</p>
+    
+    <h2>调试信息</h2>
+    <p>当前时间: <span id="current-time"></span></p>
+    <p>用户代理: <span id="user-agent"></span></p>
+    
+    <script>
+        document.getElementById('current-time').textContent = new Date().toLocaleString();
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+    </script>
+</body>
+</html>

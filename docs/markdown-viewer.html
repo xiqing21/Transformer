@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文档阅读器</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+    <!-- 使用更快的CDN和预加载 -->
+    <link rel="preload" href="https://unpkg.com/marked@12.0.0/marked.min.js" as="script">
+    <link rel="preload" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js" as="script">
+    <link rel="preload" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/github.min.css" as="style">
+    
+    <script src="https://unpkg.com/marked@12.0.0/marked.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/github.min.css">
     <style>
         * {
             margin: 0;
@@ -234,24 +239,33 @@
     </div>
 
     <script>
-        // 等待highlight.js加载完成后配置marked选项
+        // 简化的marked配置
         function initializeMarked() {
+            const config = {
+                breaks: true,
+                gfm: true
+            };
+            
+            // 如果hljs已加载，添加语法高亮
             if (typeof hljs !== 'undefined') {
-                marked.setOptions({
-                    highlight: function(code, lang) {
-                        if (lang && hljs.getLanguage(lang)) {
-                            try {
-                                return hljs.highlight(code, { language: lang }).value;
-                            } catch (err) {}
+                config.highlight = function(code, lang) {
+                    if (lang && hljs.getLanguage && hljs.getLanguage(lang)) {
+                        try {
+                            return hljs.highlight(code, { language: lang }).value;
+                        } catch (err) {
+                            console.warn('语法高亮失败:', err);
                         }
+                    }
+                    try {
                         return hljs.highlightAuto(code).value;
-                    },
-                    breaks: true,
-                    gfm: true
-                });
-                return true;
+                    } catch (err) {
+                        return code; // 降级到普通文本
+                    }
+                };
             }
-            return false;
+            
+            marked.setOptions(config);
+            return typeof hljs !== 'undefined';
         }
 
         // 获取URL参数
@@ -262,6 +276,9 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
+        // 文档缓存
+        const documentCache = new Map();
+        
         // 加载并渲染markdown文档
         async function loadMarkdown() {
             const docPath = getUrlParameter('doc');
@@ -270,45 +287,73 @@
                 return;
             }
 
-            // 等待hljs加载完成
-            let retries = 0;
-            while (!initializeMarked() && retries < 50) {
-                await new Promise(resolve => setTimeout(resolve, 100));
-                retries++;
-            }
-
-            if (retries >= 50) {
-                console.warn('highlight.js 加载超时，将使用基本渲染');
-                marked.setOptions({
-                    breaks: true,
-                    gfm: true
-                });
-            }
-
             try {
-                const response = await fetch(docPath);
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                // 检查缓存
+                let markdown;
+                if (documentCache.has(docPath)) {
+                    markdown = documentCache.get(docPath);
+                } else {
+                    // 并行初始化marked和获取文档
+                    const [response] = await Promise.all([
+                        fetch(docPath),
+                        // 给hljs最多500ms加载时间，不阻塞主流程
+                        new Promise(resolve => {
+                            let attempts = 0;
+                            const checkHljs = () => {
+                                if (typeof hljs !== 'undefined' || attempts >= 5) {
+                                    initializeMarked();
+                                    resolve();
+                                } else {
+                                    attempts++;
+                                    setTimeout(checkHljs, 100);
+                                }
+                            };
+                            checkHljs();
+                        })
+                    ]);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    markdown = await response.text();
+                    // 缓存文档内容
+                    documentCache.set(docPath, markdown);
                 }
                 
-                const markdown = await response.text();
+                // 确保marked已初始化
+                if (typeof marked === 'undefined') {
+                    throw new Error('Marked库未加载');
+                }
+                
                 const html = marked.parse(markdown);
                 
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('markdown-content').innerHTML = html;
-                document.getElementById('markdown-content').style.display = 'block';
+                // 更新DOM
+                const loadingEl = document.getElementById('loading');
+                const contentEl = document.getElementById('markdown-content');
+                
+                loadingEl.style.display = 'none';
+                contentEl.innerHTML = html;
+                contentEl.style.display = 'block';
                 
                 // 设置文档标题
-                const firstH1 = document.querySelector('#markdown-content h1');
+                const firstH1 = contentEl.querySelector('h1');
                 if (firstH1) {
-                    document.getElementById('document-title').textContent = firstH1.textContent;
-                    document.title = firstH1.textContent + ' - 文档阅读器';
+                    const title = firstH1.textContent;
+                    document.getElementById('document-title').textContent = title;
+                    document.title = title + ' - 文档阅读器';
                 }
                 
-                // 高亮代码块（如果hljs可用）
+                // 异步高亮代码块，不阻塞渲染
                 if (typeof hljs !== 'undefined') {
-                    document.querySelectorAll('pre code').forEach((block) => {
-                        hljs.highlightElement(block);
+                    requestAnimationFrame(() => {
+                        contentEl.querySelectorAll('pre code').forEach((block) => {
+                            try {
+                                hljs.highlightElement(block);
+                            } catch (err) {
+                                console.warn('代码高亮失败:', err);
+                            }
+                        });
                     });
                 }
                 
